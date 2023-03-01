@@ -6,4 +6,4 @@
 
 ## ¿Que aprendere y que se observara dentro de este repositorio?
 
-> Dentro de este repositorio encontrara los diferentes ejercicios que llevare a cabo para aprender Java
+> Dentro de este repositorio encontrara los diferentes ejercicios que llevare a cabo para aprender Java, comprendiendo la sintaxis del lenguaje, el uso de variables, tipos de datos, matematicas en java, ciclos y metodos.
