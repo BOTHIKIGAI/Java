@@ -7,9 +7,9 @@
 ## ¿Que aprendere y que se observara dentro de este repositorio?
 
 > 1. Conceptos basicos y fundamentales de Java
->   1.1 El uso de las variables 
->   1.2 Estrcuturas de control de flujo
->   1.3 funciones
+1.1 El uso de las variables 
+1.2 Estrcuturas de control de flujo
+1.3 funciones
 
 > 2. Fundamentos de Java
 >   2.1 Sintaxis
