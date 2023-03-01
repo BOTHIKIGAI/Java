@@ -14,7 +14,7 @@
 1.3 funciones
 "
 
-> 2. Fundamentos de Java
+2. Fundamentos de Java
 
 "
 2.1 Sintaxis
@@ -23,4 +23,4 @@
 2.4 Objetos
 "
 
-> 3. Ejecicios y proyectos
+3. Ejecicios y proyectos
