@@ -1,38 +1,36 @@
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Numeros {
     // variables globales: usar o utilizar en cualquier parte del programa
 
-    int n1,n2,n3;
-       // n1 = numero uno 
+    int primero, segundo, tercero;
+    // n1 = numero uno
 
     int[] listaNumeros = new int[3];
-        // listaNumeros almacenara los numeros n1, n2 y n3
+    // listaNumeros almacenara los numeros n1, n2 y n3
 
-
-    public int getN1() {
-        return n1;
+    public int getPrimero() {
+        return primero;
     }
 
-    public void setN1(int n1) {
-        this.n1 = n1;
+    public void setPrimero(int primero) {
+        this.primero = primero;
     }
 
-    public int getN2() {
-        return n2;
+    public int getSeundo() {
+        return segundo;
     }
 
-    public void setN2(int n2) {
-        this.n2 = n2;
+    public void setSeundo(int seundo) {
+        this.segundo = seundo;
     }
 
-    public int getN3() {
-        return n3;
+    public int getTercero() {
+        return tercero;
     }
 
-    public void setN3(int n3) {
-        this.n3 = n3;
+    public void setTercero(int tercero) {
+        this.tercero = tercero;
     }
 
     public int[] getListaNumeros() {
@@ -44,9 +42,9 @@ public class Numeros {
     }
 
     public void agregarNumLista() {
-        listaNumeros[0] = n1;
-        listaNumeros[1] = n2;
-        listaNumeros[2] = n3;
+        listaNumeros[0] = primero;
+        listaNumeros[1] = segundo;
+        listaNumeros[2] = tercero;
     }
 
     public void ordenarLista() {
