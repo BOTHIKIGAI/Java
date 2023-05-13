@@ -1,14 +1,14 @@
 public class libro1 {
+    // variables globales: usar o utilizar en cualquier parte del programa
     
     String autor1;
-        // nombre del autor
-
+        // nombre del autor y titulo del libro
 
     String titulo1;
-        // titulo del libro
 
     int paginas1;
         // cantidad de paginas
+
 
     public String getAutor1() {
         return autor1;
