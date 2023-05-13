@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class calcularNotas {
+    
     public static void main(String[] args)  {
         
         // creacion 
