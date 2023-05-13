@@ -1,4 +1,4 @@
-public class libro {
+public class Libro {
     // variables globales: usar o utilizar en cualquier parte del programa
     
     String autor1, titulo1, autor2, titulo2;
