@@ -33,7 +33,7 @@ public class biblioteca {
         book.setTitulo1(tit);
         book.setPaginas1(pag);
 
-        
+
 
         // capturar titulo libro 1
 
@@ -57,6 +57,7 @@ public class biblioteca {
         // Metodo mostrar libro
 
         book.mostrarLibro();
+        book.compararLibros();
     }
 
 
