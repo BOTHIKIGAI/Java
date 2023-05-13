@@ -1,11 +1,7 @@
 public class libro2 {
     
-    String autor2;
-        // nombre del autor
-
-
-    String titulo2;
-        // titulo del libro
+    String autor2, titulo2;
+        // nombre del autor y titulo del libro
 
     int paginas2;
         // cantidad de paginas
