@@ -10,6 +10,7 @@ public class libro {
     int paginas1, paginas2;
         // cantidad de paginas
 
+
     public String getAutor1() {
         return autor1;
     }
@@ -56,6 +57,21 @@ public class libro {
 
     public void setPaginas2(int paginas2) {
         this.paginas2 = paginas2;
+    }
+
+    public void mostrarLibro() {
+        System.out.println("El libro " + titulo1 + ", del autor " + autor1 + ", tiene " + paginas1 + ", paginas");
+        System.out.println("El libro " + titulo2 + ", del autor " + autor2 + ", tiene " + paginas2 + ", paginas");
+    }
+
+    public void compararLibros() {
+        
+        if (paginas1 > paginas2){
+            System.out.println("El libro con mayor numero de paginas es: " + titulo1);
+        }else{
+            System.out.println("El libro con mayor numero de paginas es: " + titulo2);
+        }
+
     }
 
     
