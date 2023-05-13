@@ -6,7 +6,7 @@ public class ordenNumeros {
         
         // creacion
 
-        Numeros num=new Numeros();
+        Numeros_lista num=new Numeros_lista();
         int num1,num2,num3;
 
         // uso de la clase scanner
@@ -28,12 +28,14 @@ public class ordenNumeros {
         System.out.println("Digite el tercer numero: ");
         num3 = captura.nextInt();
 
-        num.agregarNumLista();
+        num.setPrimero(num1);
+        num.setSegundo(num2);
+        num.setTercero(num3);
 
-        
         // metodos
 
-      
+        num.agregarNumLista();
+        num.ordenarLista();
 
     }
 
