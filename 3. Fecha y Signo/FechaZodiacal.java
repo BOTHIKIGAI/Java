@@ -41,16 +41,16 @@ public class FechaZodiacal {
     public void calcularEdad () {
         
         Calendar actual = Calendar.getInstance();
-        int mesActual = actual.get(Calendar.MONTH);
-        int diaActual = actual.get(Calendar.DAY_OF_MONTH); 
+        int mesActual = actual.get(Calendar.MONTH); 
         int añoActual = actual.get(Calendar.YEAR);
 
-        if (dia >= diaActual && mes >= mesActual ) {
+        if (mes <= mesActual ) {
             edad = añoActual - año;
             System.out.println("Edad: " + edad);
 
         } else {
             edad = (añoActual - año) - 1;
+            System.out.println("Edad: " + edad);
         }
 
     }
