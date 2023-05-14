@@ -1,5 +1,4 @@
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class FechaZodiacal {
     // variables globales: usar o utilizar en cualquier parte del programa
