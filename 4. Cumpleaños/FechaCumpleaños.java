@@ -48,9 +48,28 @@ public class FechaCumpleaños {
         
         } else {
             System.out.println("Feliz cumpleaños");
-        } 
+        }
+
+        }
 
 
+        public void diasPasadosUltimo() {
+
+            Calendar actual = Calendar.getInstance();
+
+            int diasPasados;
+            int mesActual = actual.get(Calendar.MONTH)+1;
+            int diaActual = actual.get(Calendar.DAY_OF_MONTH);
+
+
+            if (mesActual < mes) {
+                diasPasados = ((((12-mes)*30)+(30-dia))+(((mesActual - 1)*30)+dia));
+                System.out.println("Desde tu ultimo cumpleaños han pasado: " + diasPasados + " dias");
+            } else if (mesActual > mes) {
+                diasPasados =  ((((mesActual-mes)-1)*30) + ((30 - dia)+diaActual));
+                
+                System.out.println("Desde tu ultimo cumpleaños han pasado: " + diasPasados + " dias");
+            }
         
-    }
+        }
 }

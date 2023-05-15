@@ -29,6 +29,7 @@ public class diasCumpleaños {
         // metodos
 
         cumpleaños.cuantoFalta();
+        cumpleaños.diasPasadosUltimo();
 
     }
 }
