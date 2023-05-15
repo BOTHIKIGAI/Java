@@ -1,6 +1,5 @@
 import java.util.Arrays;
 
-import javax.lang.model.util.ElementScanner14;
 
 public class Numeros_lista {
     // variables globales: usar o utilizar en cualquier parte del programa
