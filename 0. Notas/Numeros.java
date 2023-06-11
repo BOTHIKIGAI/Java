@@ -40,8 +40,8 @@ public class Numeros{
         if(promedio >= 3.0){
             System.out.println("El apromedio alcanzado es: " + promedio);
             System.out.println("El alumno "+ nombre + " ha aprobado el curso");
-    }else{
-        System.out.println("El alumno no ha aprobado el curso, debe realizar recuperacion");
+        }else{
+            System.out.println("El alumno no ha aprobado el curso, debe realizar recuperacion");
 
         }
 
