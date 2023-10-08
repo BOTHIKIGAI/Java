@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class cuadradoAstericos {
     public static void main(String[] args) {
         
-        // Libreria
+        // Clase
         Scanner scanner = new Scanner(System.in);
 
         // Entrada de datos

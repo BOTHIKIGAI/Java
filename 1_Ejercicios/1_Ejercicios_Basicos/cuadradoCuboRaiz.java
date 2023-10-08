@@ -7,7 +7,7 @@ public class cuadradoCuboRaiz {
         // Escribe un programa que lea un número entero del usuario y luego imprima el cuadrado, 
         // el cubo y la raíz cuadrada de ese número.
 
-        // Librerias
+        // Clase
         Scanner leerT = new Scanner(System.in);
 
         // Variables

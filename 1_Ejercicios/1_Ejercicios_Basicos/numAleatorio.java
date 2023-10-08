@@ -7,7 +7,7 @@ public class numAleatorio {
         // Ejercicio
         // Programa que solicite un numero al usuario y luego de un numero random entre ese numero 
         
-        // Libreria
+        // Clase
         Scanner leerT = new Scanner(System.in); // Leer entradas por terminal
         Random rand = new Random();
 

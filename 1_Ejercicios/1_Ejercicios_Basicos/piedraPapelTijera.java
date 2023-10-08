@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class piedraPapelTijera {
     public static void main (String[] args) {
 
-        // Librerias
+        // Clase
         Scanner leerT = new Scanner(System.in);
 
         // Variables
