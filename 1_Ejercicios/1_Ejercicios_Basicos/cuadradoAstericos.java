@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class cuadradoAstericos {
     public static void main(String[] args) {
         
+        // Imprimir un cuadrado en base a numero entero
+
         // Clase
         Scanner scanner = new Scanner(System.in);
 
