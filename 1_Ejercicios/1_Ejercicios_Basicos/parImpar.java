@@ -10,7 +10,7 @@ public class parImpar {
 
         // Variables
 
-        int Num = 0;
+        int Num = 0; // 
         
         // Solicitar datos
 
@@ -21,7 +21,7 @@ public class parImpar {
 
         if ((Num % 2)== 0) {
 
-            System.out.println("El numero " + Num + " es par ");
+            System.out.println("El numero " + Num + " es par "); 
 
         } else {
 
@@ -30,6 +30,24 @@ public class parImpar {
         }
         
         leerT.close();
+
+        // Explicación
+
+        /* 
+         * <--- Estructura de control --->
+         * 
+         *  1. If 
+         *  2. Else 
+         * 
+         * <--- Ciclos  --->
+         * 
+         *  No contiene ciclos
+         * 
+         * <--- Operadores  --->
+         * 
+         *  1. % modulo
+         * 
+        */
 
     }
 
