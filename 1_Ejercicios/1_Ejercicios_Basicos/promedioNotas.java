@@ -2,8 +2,6 @@ import java.util.Scanner;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
-
-
 public class promedioNotas {
     public static void main (String[] args) {
 
@@ -60,6 +58,7 @@ public class promedioNotas {
 
         int inicioSoftware = 1; // El software funcionanado
         int inicioSesion = 1;
+        int cambioPorcentaje = 1;
 
         // Inicio del sisitema 
 
@@ -84,62 +83,9 @@ public class promedioNotas {
 
                     ////////////////////////////////////////////////////////////////////////////////////////
 
-                    System.out.println(" ");
-                    System.out.println("Bienvenido al sistema" + usu);
-                    System.out.println("Hoy es " + fechaHoy);
+                    // Saludo
 
-                    ////////////////////////////////////////////////////////////////////////////////////////
-
-                    // Elegir el cambio a realizar
-
-                    System.out.println(" ");
-                    System.out.println("¿Que cambio de porcentaje desea realizar?");
-                    System.out.println(" 1 = Parcial, 2 = Examen final, 3 = Exposición, 4 = Trabajao final, 5 = Asistencia");
-                    int option = leert.nextInt();
-
-                    // Resumen de los porcentajes actuales
-
-                    System.out.println(" ");
-                    System.out.println("Acutalmente los porcentajes son: ");
-                    System.out.println("Parcial: " + (porcentajeParcial * 100) + "%");
-                    System.out.println("Examen final: " + (porcentajeExamenFinal * 100) + "%" );
-                    System.out.println("Exposición: " + (porcentajeExposicion * 100) + "%" );
-                    System.out.println("Trabajo final: " + (porcentajeTrabajoFinal * 100) + "%");
-                    System.out.println("Asistencia: " + (porcentajeAsistencia * 100 + "%"));
-
-                    ////////////////////////////////////////////////////////////////////////////////////////
                     
-                    switch (option) {
-
-                        case 1:
-                            System.out.println("Cambiar porcentaje de parcial");
-                            System.out.println(" ");
-                            porcentajeCambioParcial = leert.nextFloat();
-                            
-
-                            break;
-
-                        case 2:
-                            System.out.println("Cambiar porcentaje de examen final");
-                            System.out.println(" ");
-                            break;
-
-                        case 3:
-                            System.out.println("Cambiar porcentaje de exposición");
-                            System.out.println(" ");
-                            break;
-
-                        case 4:
-                            System.out.println("Cambiar porcentaje de trabajo final");
-                            System.out.println(" ");
-                            break;
-                        
-                        case 5:
-                            System.out.println("Cambiar porcentaje de asistencia");
-                            System.out.println(" ");
-                            break;
-
-                    }
 
                     ////////////////////////////////////////////////////////////////////////////////////////
 
