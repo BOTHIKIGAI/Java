@@ -18,12 +18,10 @@ public class promedioNotas {
 
             // Variables Inicio de Sesion
 
-                // Maestro
+                // Maestro y Estudiante
 
                 String usu; // Estudiante = juanes123   Maestro academico = master123
                 String pass;  // pass123
-
-            // Variables Estudiante
 
         String nomE = "Alumno";
         float notaFinal = 0.0f;
@@ -33,10 +31,12 @@ public class promedioNotas {
         String fechaHoy = formato.format(fecha);
 
             // Variables Calificacion
-        
-        float[] notasCalificaciónParciales = new float[3];
+    
         float notaExamenFinal, notaExposicion, notaTrabajoFinal, asistencia;
         int numClases = 0;
+        float maxNota = 0;
+        float minNota = 0;
+        float porcentajeAprobar = 0.75f;
 
             // Varaibles Porcentajes
 
@@ -72,6 +72,11 @@ public class promedioNotas {
         int numCambioParciales = 3; // Variables para establecer si cumple con las reglas o no, si cumple numParciales tomara su valor
         int operación = 1; // Variable de control para usar en diferentes ciclos while de operacion de cambio
 
+            // Variables de calificación
+
+        float[] notasCalificaciónParciales = new float[numParciales];
+        float notaParcial;
+
         // Inicio del sisitema 
 
         // Bienvenida
@@ -89,7 +94,6 @@ public class promedioNotas {
             ////////////////////////////////////////////////////////////////////////////////////////
             
             // Ingreso de credencialxes
-
             System.out.println(" ");
             System.out.println("Ingrese sus credenciales");
             System.out.println(" ");
@@ -218,13 +222,15 @@ public class promedioNotas {
                                 System.out.println(" ");
                                 System.out.println("<-- Parcial -->");
                                 System.out.println(" ");
-                                System.out.println("El porcentaje actual es: " + porcentajeParcial + "%");
+                                System.out.println("El porcentaje actual es: " + (porcentajeParcial * 100) + "%");
                                 System.out.println(" ");
 
                                 // Ingresar nuevo porcentaje
                                 System.out.print("Ingrese el nuevo porcentaje: ");
-                                porcentajeCambioParcial = leert.nextInt();
+                                porcentajeCambioParcial = leert.nextFloat();
+                                porcentajeCambioParcial /= 100;
                                 System.out.println(" ");
+                                
 
                             }
 
@@ -232,14 +238,15 @@ public class promedioNotas {
 
                                 // Mensaje actual de las variables
                                 System.out.println(" ");
-                                System.out.println(" Examen final ");
+                                System.out.println("<-- Examen final -->");
                                 System.out.println(" ");
-                                System.out.println("El porcentaje actual es: " + porcentajeExamenFinal + "%");
+                                System.out.println("El porcentaje actual es: " + (porcentajeExamenFinal * 100) + "%");
                                 System.out.println(" ");
                                 
                                 // Ingresar nuevo porcentaje
                                 System.out.print("Ingrese el nuevo porcentaje: ");
-                                porcentajeCambioExamenFinal = leert.nextInt();
+                                porcentajeCambioExamenFinal = leert.nextFloat();
+                                porcentajeCambioExamenFinal /= 100;
                                 System.out.println(" ");
 
                             }
@@ -248,11 +255,15 @@ public class promedioNotas {
 
                                 // Mensaje actual de las variables
                                 System.out.println(" ");
-                                System.out.println(" Exposición ");
+                                System.out.println("<-- Exposición -->");
+                                System.out.println(" ");
+                                System.out.println("El porcentaje actual es: " + (porcentajeExposicion * 100) + "%");
                                 System.out.println(" ");
 
                                 // Ingresar nuevo porcentaje
-                                System.out.println("El porcentaje actual es: " + porcentajeExposicion + "%");
+                                System.out.print("Ingrese el nuevo porcentaje: ");
+                                porcentajeCambioExposicion = leert.nextFloat();
+                                porcentajeCambioExposicion /= 100;
                                 System.out.println(" ");
 
                             }
@@ -262,11 +273,15 @@ public class promedioNotas {
 
                                 // Mensaje actual de las variables
                                 System.out.println(" ");
-                                System.out.println(" Trabajo final ");
+                                System.out.println("<-- Trabajo final -->");
+                                System.out.println(" ");
+                                System.out.println("El porcentaje actual es: " + (porcentajeTrabajoFinal * 100) + "%");
                                 System.out.println(" ");
 
                                 // Ingresar nuevo porcentaje
-                                System.out.println("El porcentaje actual es: " + porcentajeTrabajoFinal + "%");
+                                System.out.print("Ingrese el nuevo porcentaje: ");
+                                porcentajeCambioTrabajoFinal = leert.nextFloat();
+                                porcentajeCambioTrabajoFinal /= 100;
                                 System.out.println(" ");
 
                             }
@@ -276,11 +291,15 @@ public class promedioNotas {
 
                                 // Mensaje actual de las variables
                                 System.out.println(" ");
-                                System.out.println(" Asistencia ");
+                                System.out.println("<-- Asistencia -->");
+                                System.out.println(" ");
+                                System.out.println("El porcentaje actual es:  " + (porcentajeAsistencia * 100) + "%" );
                                 System.out.println(" ");
 
                                 // Ingresar nuevo porcentaje
-                                System.out.println("El porcentaje actual es:  " + porcentajeAsistencia + "%" );
+                                System.out.print("Ingrese el nuevo porcentaje: ");
+                                porcentajeCambioAsistencia = leert.nextFloat();
+                                porcentajeCambioAsistencia /= 100;
                                 System.out.println(" ");
 
                             }
@@ -291,6 +310,9 @@ public class promedioNotas {
                                 System.out.println(" Operación cancelada ");
                                 System.out.println(" ");
 
+                                // Cancelación cambio porcentaje
+                                operación = 2;
+
                             }
 
                             else {
@@ -298,7 +320,9 @@ public class promedioNotas {
                                 System.out.println(" ");
                                 System.out.println(" Error o dato ingresado incorrectamente ");
                                 System.out.println(" ");
-
+                                
+                                // Cancelación cambio porcentaje
+                                operación = 2;
 
                             }
 
@@ -310,21 +334,171 @@ public class promedioNotas {
                              * 
                              */
 
-                            System.out.println("¿Que porcentaje modificara a cambio?");
-                            System.out.println("----------------------------------------------");
-                            System.out.println("|   Opcion   |          Descripción          |");
-                            System.out.println("----------------------------------------------");
-                            System.out.println("|     1      |            Parcial            |");
-                            System.out.println("|     2      |         Examen final          |");
-                            System.out.println("|     3      |          Exposicion           |");
-                            System.out.println("|     4      |         Trabajo final         |");
-                            System.out.println("|     5      |           Asitencia           |");
-                            System.out.println("|     6      |       Cancelar operación      |");
-                            System.out.println("----------------------------------------------");
-                            System.out.println(" ");
-                            System.out.print("Rspuesta: ");
-                            codigoPorcentaje = leert.nextInt();
-                            System.out.println(" ");
+                            if (operación == 1) {
+
+                                // Preguntar
+
+                                System.out.println("¿Que porcentaje modificara a cambio?");
+                                System.out.println("----------------------------------------------");
+                                System.out.println("|   Opcion   |          Descripción          |");
+                                System.out.println("----------------------------------------------");
+                                System.out.println("|     1      |            Parcial            |");
+                                System.out.println("|     2      |         Examen final          |");
+                                System.out.println("|     3      |          Exposicion           |");
+                                System.out.println("|     4      |         Trabajo final         |");
+                                System.out.println("|     5      |           Asitencia           |");
+                                System.out.println("|     6      |       Cancelar operación      |");
+                                System.out.println("----------------------------------------------");
+                                System.out.println(" ");
+                                System.out.print("Rspuesta: ");
+                                codigoPorcentaje = leert.nextInt();
+                                System.out.println(" ");
+
+                                // Cambiar segundo porcentaje
+
+                                if (codigoPorcentaje == 1) { // Cambio parcial
+
+                                    // Mensaje actual de las variables
+                                    System.out.println(" ");
+                                    System.out.println("<-- Parcial -->");
+                                    System.out.println(" ");
+                                    System.out.println("El porcentaje actual es: " + (porcentajeParcial * 100) + "%");
+                                    System.out.println(" ");
+
+                                    // Ingresar nuevo porcentaje
+                                    System.out.print("Ingrese el nuevo porcentaje: ");
+                                    porcentajeCambioParcial = leert.nextFloat();
+                                    porcentajeCambioParcial /= 100;
+                                    System.out.println(" ");
+                                
+
+                                }
+
+                                else if (codigoPorcentaje == 2) { //Examen final
+
+                                    // Mensaje actual de las variables
+                                    System.out.println(" ");
+                                    System.out.println("<-- Examen final --> ");
+                                    System.out.println(" ");
+                                    System.out.println("El porcentaje actual es: " + (porcentajeExamenFinal * 100) + "%");
+                                    System.out.println(" ");
+                                    
+                                    // Ingresar nuevo porcentaje
+                                    System.out.print("Ingrese el nuevo porcentaje: ");
+                                    porcentajeCambioExamenFinal = leert.nextFloat();
+                                    porcentajeCambioExamenFinal /= 100;
+                                    System.out.println(" ");
+
+                                }
+
+                                else if (codigoPorcentaje == 3) { // Exposición
+
+                                    // Mensaje actual de las variables
+                                    System.out.println(" ");
+                                    System.out.println("<-- Exposición -->");
+                                    System.out.println(" ");
+                                    System.out.println("El porcentaje actual es: " + (porcentajeExposicion * 100) + "%");
+                                    System.out.println(" ");
+
+                                    // Ingresar nuevo porcentaje
+                                    System.out.print("Ingrese el nuevo porcentaje: ");
+                                    porcentajeCambioExposicion = leert.nextFloat();
+                                    porcentajeCambioExposicion /= 100;
+                                    System.out.println(" ");
+
+                                }
+
+                                
+                                else if (codigoPorcentaje == 4) { // Trabajo final
+
+                                    // Mensaje actual de las variables
+                                    System.out.println(" ");
+                                    System.out.println("<-- Trabajo final -->");
+                                    System.out.println(" ");
+                                    System.out.println("El porcentaje actual es: " + (porcentajeTrabajoFinal * 100) + "%");
+                                    System.out.println(" ");
+
+                                    // Ingresar nuevo porcentaje
+                                    System.out.print("Ingrese el nuevo porcentaje: ");
+                                    porcentajeCambioTrabajoFinal = leert.nextFloat();
+                                    porcentajeCambioTrabajoFinal /= 100;
+                                    System.out.println(" ");                                    
+
+                                }
+
+                                
+                                else if (codigoPorcentaje == 5) { // Asistencia
+
+                                    // Mensaje actual de las variables
+                                    System.out.println(" ");
+                                    System.out.println("<-- Asistencia -->");
+                                    System.out.println(" ");
+                                    System.out.println("El porcentaje actual es:  " + (porcentajeAsistencia * 100) + "%" );
+                                    System.out.println(" ");
+
+                                    // Ingresar nuevo porcentaje
+                                    System.out.print("Ingrese el nuevo porcentaje: ");
+                                    porcentajeCambioAsistencia = leert.nextFloat();
+                                    porcentajeCambioAsistencia /= 100;
+                                    System.out.println(" ");                                    
+
+                                }
+
+                                else if (codigoPorcentaje == 6) { // Cancelación de la operación
+
+                                    System.out.println(" ");
+                                    System.out.println(" Operación cancelada ");
+                                    System.out.println(" ");
+
+                                    // Cancelación cambio porcentaje
+                                    operación = 2;
+
+                                }
+
+                                else {
+
+                                    System.out.println(" ");
+                                    System.out.println(" Error o dato ingresado incorrectamente ");
+                                    System.out.println(" ");
+                                    
+                                    // Cancelación cambio porcentaje
+                                    operación = 2;
+
+                                }
+
+                                // Confirmar cambio variables
+
+                                if (sumPorcentajeCambio == 1.0) {
+
+                                    System.out.println("La operación se a realizado correctamente");
+                                    porcentajeAsistencia = porcentajeCambioAsistencia;
+                                    porcentajeExamenFinal = porcentajeCambioExamenFinal;
+                                    porcentajeExposicion = porcentajeCambioExposicion;
+                                    porcentajeParcial = porcentajeCambioParcial;
+                                    porcentajeTrabajoFinal = porcentajeCambioTrabajoFinal;
+
+                                }
+
+                                else if (sumPorcentaje != 1.0) {
+
+                                    System.out.println("Los valores que has ingresado no realizan la sumatoria esperada");
+
+                                }
+
+                                else {
+
+                                    System.out.println(" Error ");
+
+                                }
+                                
+
+                            } else {
+
+                                // Operación cancelada por el ingreso de una opción no acordada
+                                System.out.println(" ");
+
+                            }
+                            
 
                         } 
 
@@ -456,6 +630,7 @@ public class promedioNotas {
 
                 else if (usu.equals("juanes123") && pass.equals("pass123")) {
 
+                    // Estudiante
                     ////////////////////////////////////////////////////////////////////////////////////////
 
                     // Saludo
@@ -464,6 +639,158 @@ public class promedioNotas {
                     System.out.println("Fecha: " + fechaHoy);
                     System.out.println(" ");
                     
+                    // Inicio de software
+
+                    System.out.println(" ");
+                    System.out.println("¿Que desea consultar?");
+                    System.out.println(" ");
+                    System.out.println("---------------------------------");
+                    System.out.println("|   Opcion   |    Descripción   |");
+                    System.out.println("---------------------------------");
+                    System.out.println("|     1      |     Nota final   |");
+                    System.out.println("|     2      |        Salir     |");
+                    System.out.println("---------------------------------");
+                    System.out.println(" ");
+                    System.out.print("Respuesta: ");
+                    opcionMenu = leert.nextInt();
+
+                    // Condicional - menu opcioones
+
+                    if (opcionMenu == 1) {
+
+                        // Establecer rango de notas
+                        while (operación == 1) {
+
+                            System.out.println(" ");
+                            System.out.println("¿Cual es el rango de notas? ");
+                            System.out.println(" ");
+
+                            // Nota minima
+                            System.out.print("Nota minima: ");
+                            minNota = leert.nextFloat();
+                            System.out.println(" ");
+
+                            // Nota maxima
+                            System.out.print("Nota maxima: ");
+                            maxNota = leert.nextFloat();
+                            System.out.println(" ");
+
+
+                            // Condicional - Verificar rango de notas
+                            if (minNota < 0) {
+
+                                // Condiconal si la nota es menor a 0
+                                System.out.println(" ");
+                                System.out.println("La nota no puede ser menor a 0");
+                                System.out.println(" ");
+
+                            }   
+
+                            else if (minNota > maxNota) {
+
+                                // Condicional si la nota es menor a 
+                                System.out.println(" ");
+                                System.out.println("La nota minjaima no puede ser mayor a la nota maxima");
+                                System.out.println(" ");
+
+                            } 
+
+                            else {
+
+                                System.out.println(" ");
+                                System.out.println("Operacion completada...");
+                                System.out.println("Nota maxima: " + maxNota + " y la nota minima: " + minNota);
+                                System.out.println(" ");
+
+                                // Cerrar ciclo
+                                operación = 2;
+                            }
+
+                        }
+
+                        while (operación == 2) {
+
+                            // Notas parciales
+                            System.out.println(" ");
+                            System.out.println("Ingresa la notas del parcial: ");
+
+                            for (int i = 0; i < notasCalificaciónParciales.length; i++) {
+
+                                // Re inicio de variable
+                                operación = 2;
+                                
+                                while (operación == 2) {
+
+                                    System.out.print("Nota " + (i + 1) + "°: ");
+                                    notaParcial = leert.nextFloat();
+
+                                    if (notaParcial < minNota) {
+
+                                        // Error por ingreso de nota parcial menor que la nota minima
+                                        System.out.println("Debes ingresar una nota mayor a la nota minima: " + minNota);
+
+                                    }
+
+                                    else if (notaParcial > maxNota) {
+
+                                        // Error por ingreso de nota parcial mayor que la nota maxima
+                                        System.out.println("Debes ingresar una nota menor a la nota maxima: " + maxNota);
+
+                                    } 
+
+                                    else if (notaParcial <= maxNota && notaParcial >= minNota) {
+
+                                        // Agregar nota calificación parcial
+                                        notasCalificaciónParciales[i] = notaParcial;
+
+                                        // Cerrar ciclo
+                                        operación = 1;
+
+                                    } 
+
+
+                                    else { 
+
+                                        System.out.println("Error");
+                                        System.out.println(" ");
+
+                                    }
+
+                                }
+
+                            }
+
+                            System.out.println(" ");
+                            System.out.println("Las notas ingresadas son: ");
+                            for (int a = 0; a < (notasCalificaciónParciales.length); a++) {
+
+                                System.out.println("Nota " + (a + 1) + "°: " + notasCalificaciónParciales[a]);
+
+                            }
+
+                        }
+
+                        // Notas
+
+                    }
+
+                    else if (opcionMenu == 2) {
+
+                        System.out.println(" ");
+                        System.out.println("Saliendo de la operacion...");
+                        System.out.println(" ");
+
+                    }
+
+                    else {
+
+                        System.out.println(" ");
+                        System.out.println("Error");
+                        System.out.println(" ");
+
+                    }
+
+
                     // Salir de la sesión
                     System.out.println(" ");
                     System.out.println("¿Desea salir de la sesión? Si = 2    No = 1");
@@ -471,6 +798,7 @@ public class promedioNotas {
                     inicioSesion = leert.nextInt();
                     System.out.println(" ");
 
+                    
                     ////////////////////////////////////////////////////////////////////////////////////////
 
                 } 
