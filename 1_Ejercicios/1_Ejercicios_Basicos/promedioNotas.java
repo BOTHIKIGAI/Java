@@ -68,6 +68,9 @@ public class promedioNotas {
         int codigoInstructor = 1; // Iteración para ejecutar las opciones del instructor
         int opcionMenu;           // Iteraión opciones menu
         int codigoPorcentaje = 1; // Iteración para cambio de notas
+        int numParciales = 3; // Cantidad de parciales que abra
+        int numCambioParciales = 3; // Variables para establecer si cumple con las reglas o no, si cumple numParciales tomara su valor
+        int operación = 1; // Variable de control para usar en diferentes ciclos while de operacion de cambio
 
         // Inicio del sisitema 
 
@@ -120,14 +123,14 @@ public class promedioNotas {
 
                         // Inicio de consultas
                         System.out.println(" ");
-                        System.out.println("¿Que desea conocer?");
+                        System.out.println("¿Que desea consultar?");
                         System.out.println(" ");
                         System.out.println("---------------------------------------------------------------");
                         System.out.println("|   Opcion   |                  Descripción                   |");
                         System.out.println("---------------------------------------------------------------");
                         System.out.println("|     1      |                  porcentajes                   |");
                         System.out.println("|     2      |              modificar porcentajes             |");
-                        System.out.println("|     3      |   cambio de numero de asistencia o parciales   |");
+                        System.out.println("|     3      |          cambio de numero de parciales         |");
                         System.out.println("|     4      |                     Salir                      |");
                         System.out.println("---------------------------------------------------------------");
                         System.out.println(" ");
@@ -207,7 +210,7 @@ public class promedioNotas {
 
                             // Condicional
 
-                                // Porcentaje 
+                                // Porcentaje
 
                             if (codigoPorcentaje == 1) { // Cambio parcial
 
@@ -328,9 +331,62 @@ public class promedioNotas {
                         } 
 
 
-                        else if (opcionMenu == 3) {
+                        else if (opcionMenu == 3) { // Modificar le numero de parciale
 
-                            System.out.println("Cambio de numeros");
+                            // Mensaje numero de parciales
+                            System.out.println(" ");
+                            System.out.println("El numero de parciales actual es de: " + numParciales);
+                            System.out.println(" ");
+       
+                            while (operación == 1) {
+
+                                // Inicio de cambio
+                                System.out.println(" ");
+                                System.out.println("¿A cuanto desea cambiarlo? (No puede ser mayor a 5)");
+                                System.out.print("Nueva cantidad de parciales: ");
+                                numCambioParciales = leert.nextInt();
+                                System.out.println(" ");
+
+
+                                // Condicionales - Verificar que el parcial sea mayor a 0 o menor a 5
+                                if (numCambioParciales <= 0 || numCambioParciales > 5) {
+
+                                    // Mensaje de error
+                                    System.out.println(" ");
+                                    System.out.println("Ingresaste un valor mayor a 5 o menor a 0");
+                                    System.out.println(" ");
+
+                                }
+
+                                // Condicionales - Verificar que el parcial sea menor a 5 y 
+                                else if (numCambioParciales <= 5 && numCambioParciales > 0) {
+
+                                    // Cambio cantidad de parciales
+                                    System.out.println(" ");
+                                    System.out.println("El cambio se ha realizado correctamente");
+                                    numParciales = numCambioParciales;
+                                    System.out.println("El nuevo numero de parciales es: " + numParciales);
+
+                                    // Finalizar ciclo
+                                    operación = 2; 
+
+                                }
+
+                                else {
+
+                                    // Mensaje de error
+                                    System.out.println(" ");
+                                    System.out.println("Error");
+                                    System.out.println(" ");
+
+                                    // Finalizar ciclo
+                                    operación = 2;
+
+                                }
+
+
+                            }
+                        
 
                         }
 
@@ -356,6 +412,9 @@ public class promedioNotas {
 
                         }
 
+                        // Reinicio de variables
+                        operación = 1;
+
                         // Realizar otra consulta
                         System.out.println(" ");
                         System.out.println("¿Desea realizar otra acción? Si = 1    No = 2");
@@ -371,6 +430,24 @@ public class promedioNotas {
                     System.out.println("¿Desea salir de la sesión? Si = 2    No = 1");
                     System.out.print("Respuesta: ");
                     inicioSesion = leert.nextInt();
+
+                    // Condicional - Verificación cierre de sesión
+
+                    // Si inicioSesion igual a 1 se continuara la sesión y volvera al menu
+                    if (inicioSesion == 1) {
+                        codigoInstructor = 1;
+                    } 
+
+                    // Si inicioSesion igual a 2 se cerrara
+                    else if (inicioSesion == 2) {
+                        codigoInstructor = 2;
+                    }
+
+                    // Si inicioSesion es diferente a cualquier valor solictiado se cerrara la sesión
+                    else {
+                        codigoInstructor = 2;
+                    }
+
                     System.out.println(" ");
 
 
