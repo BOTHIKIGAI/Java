@@ -326,8 +326,6 @@ public class promedioNotas {
                             codigoPorcentaje = leert.nextInt();
                             System.out.println(" ");
 
-                            
-
                         } 
 
 
