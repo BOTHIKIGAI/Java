@@ -1,16 +1,15 @@
 import java.util.Scanner;
-
-import javax.sound.midi.Soundbank;
-
 import java.util.Date;
-import java.util.InputMismatchException;
 import java.text.SimpleDateFormat;
 
 public class promedioNotas {
     public static void main (String[] args) {
 
-        // Librerias
+        // Clase scanner
         Scanner leert = new Scanner(System.in);
+        
+        // Clase fecha
+        
         Date fecha = new Date();
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
 
@@ -23,7 +22,7 @@ public class promedioNotas {
                 String usu; // Estudiante = juanes123   Maestro academico = master123
                 String pass;  // pass123
 
-        String nomE = "Alumno";
+        String nomE = "";
         float notaFinal = 0.0f;
 
             // Variables reporte
@@ -32,11 +31,23 @@ public class promedioNotas {
 
             // Variables Calificacion
     
-        float notaExamenFinal, notaExposicion, notaTrabajoFinal, asistencia;
+        float notaExamenFinal = 0;
+        float notaExposicion= 0; 
+        float notaTrabajoFinal = 0; 
+        float notaAsistencia = 0;
+        float notaParcialPromedio = 0;
+        String resultado = "";
+
+            // Clases
+
         int numClases = 0;
+        int numClassAsistidas = 0;
+        float porcentajeClasesAsistidas = 0.0f;
+
+            // Rango de notas o calificación
+
         float maxNota = 0;
         float minNota = 0;
-        float porcentajeAprobar = 0.75f;
 
             // Varaibles Porcentajes
 
@@ -658,6 +669,12 @@ public class promedioNotas {
 
                     if (opcionMenu == 1) {
 
+                        // Nombre estudiante
+                        System.out.println(" ");
+                        System.out.print("Ingrese su nombre: ");
+                        nomE = leert.next();
+                        System.out.println(" ");
+
                         // Establecer rango de notas
                         while (operación == 1) {
 
@@ -707,6 +724,8 @@ public class promedioNotas {
                             }
 
                         }
+
+                        // Notas del parcial
 
                         while (operación == 2) {
 
@@ -760,17 +779,276 @@ public class promedioNotas {
 
                             }
 
+                            // Parcial
+
                             System.out.println(" ");
                             System.out.println("Las notas ingresadas son: ");
                             for (int a = 0; a < (notasCalificaciónParciales.length); a++) {
 
+                                // Imprimir notras ingresadas
                                 System.out.println("Nota " + (a + 1) + "°: " + notasCalificaciónParciales[a]);
+
+                                // Sumattoria de las notas
+                                notaParcialPromedio += notasCalificaciónParciales[a];
+
+                            }
+
+
+                            if (notaParcialPromedio != 0) {
+
+                                // Obtener el promedio de la notas del parcial
+                                notaParcialPromedio /= numParciales;
+
+                                // Redondear dato
+                                String resultadoParcialPromedio = String.format("%.2f", notaParcialPromedio);
+
+                                // Mensaje - Promedio parcial
+                                System.out.println(" ");
+                                System.out.println("El promedio de las notas parcial es: " + resultadoParcialPromedio);
+                                System.out.println(" ");
 
                             }
 
                         }
 
-                        // Notas
+                        // Examen final
+
+                        while (operación == 1) {
+
+                            // Ingresar nota final
+                            System.out.println(" ");
+                            System.out.print("Ingresa la nota del examen final: ");
+                            notaExamenFinal = leert.nextFloat();
+                            System.out.println(" ");
+
+                            // Condicional - Nota cumple con las reglas
+
+                            if (notaExamenFinal < minNota || notaExamenFinal > maxNota) {
+
+                                System.out.println("Debes ingresar un dato menor o igual a " + maxNota + " y mayor o igual a " + minNota);  
+
+                            }
+
+                            else if (notaExamenFinal >= minNota && notaExamenFinal <= maxNota) {
+
+                                operación = 2;
+
+                            }
+
+                            else {
+
+                                System.out.println("Error");
+                                System.out.println(" ");
+
+                            } 
+
+                        }
+
+                        // Exposición
+
+                        while (operación == 2) {
+
+                            // Ingresar nota
+                            System.out.println(" ");
+                            System.out.print("Ingresar la nota de la exposición: ");
+                            notaExposicion = leert.nextFloat();
+                            System.out.println(" ");
+
+                            // Condicional - Nota cumple con las reglas
+
+                            if (notaExposicion < minNota || notaExposicion > maxNota) {
+
+                                System.out.println("Debes ingresar un dato menor o igual a " + maxNota + " y mayor o igual a " + minNota);  
+
+                            }
+
+                            else if (notaExposicion >= minNota && notaExposicion <= maxNota) {
+
+                                operación = 1;
+
+                            }
+
+                            else {
+
+                                System.out.println("Error");
+
+                            } 
+
+                        }
+
+                        // Trabajo final
+
+                        while (operación == 1) {
+
+                            // Ingresar nota
+                            System.out.println(" ");
+                            System.out.print("Ingresar la nota trabajo final: ");
+                            notaTrabajoFinal = leert.nextFloat();
+                            System.out.println(" ");
+
+                            // Condicional - Nota cumple con las reglas
+
+                            if (notaTrabajoFinal < minNota || notaTrabajoFinal > maxNota) {
+
+                                System.out.println("Debes ingresar un dato menor o igual a " + maxNota + " y mayor o igual a " + minNota);  
+
+                            }
+
+                            else if (notaTrabajoFinal >= minNota && notaTrabajoFinal <= maxNota) {
+
+                                operación = 2;
+
+                            }
+
+                            else {
+
+                                System.out.println("Error");
+
+                            }     
+
+                        }
+
+                        // Asistencia
+
+                        while (operación == 2) {
+
+                            // Mientras que el numero de clases siga las reglas de la logica de negocio
+                            while (operación == 2) {
+
+                                // Entrada numero de clases realizadas
+                                System.out.println(" ");
+                                System.out.print("Ingrese el numero de clases que se realizaron: ");
+                                numClases = leert.nextInt();
+                                System.out.println(" ");
+
+                                // Validar el numero de clases
+                                if (numClases <= 0) {
+
+                                    // Mensaje de error
+                                    System.out.println("El numero de clases no puede ser menor o igual a cero");
+                                    System.out.println(" ");
+
+                                } 
+
+                                else if (numClases > 0) {
+                                    
+                                    // Cerrar ciclo
+                                    operación = 1;
+
+                                }
+
+                                else {
+
+                                    // Mensaje de error
+                                    System.out.println("Error");
+                                    System.out.println(" ");
+
+                                }
+
+
+                            }
+
+                            // Mientras que el numero de clases asistidas siga las reglas de la logica de negocio 
+                            while (operación == 1) {
+
+                                // Entrada numero de clases asistidas
+                                System.out.print("Ingrese el numero de clases a las cuales asistio: ");
+                                numClassAsistidas = leert.nextInt();
+                                System.out.println(" ");
+
+                                // Logica de negocio - Calculo porcentaje clases asistidas                                
+                                if (numClassAsistidas > numClases || numClassAsistidas < 0) {
+
+                                    System.out.println("No puede ingresar un numero mayor al numero de clases que se realizaron");
+                                    System.out.println("y ampoco se puede ingresar un numero menor a cero ");
+                                    System.out.println(" ");
+
+                                }
+
+                                else if (numClassAsistidas >= 0 && numClassAsistidas <= numClases) { 
+
+                                    //Porcentaje de clases a las cuales asistio
+                                    porcentajeClasesAsistidas = ((float) numClassAsistidas/ (float)numClases) * 100;
+                                    System.out.println("Asistio al " + Math.round(porcentajeClasesAsistidas) + " % de las clases");
+                                    System.out.println(" ");
+
+                                    // Calificación por asitencia
+                                    notaAsistencia =  (porcentajeClasesAsistidas/maxNota) * 100;
+                                    System.out.println("Su calificación por su asistencia es de " + Math.round(notaAsistencia));
+                                    System.out.println(" ");
+                                    
+                                    // Cerrar ciclo
+                                    operación = 2;
+
+                                }
+
+                                else {
+
+                                    System.out.println("Error");
+                                    System.out.println(" ");
+                                }
+
+                            }
+                       
+                            // Cerrar ciclo
+                            operación = 1;              
+                        
+                        }
+
+                        // Condicional de aprobación
+
+                        notaFinal = (notaParcialPromedio * porcentajeParcial) + (notaExamenFinal * porcentajeExamenFinal) + (notaExposicion * porcentajeExposicion) + (notaTrabajoFinal * porcentajeTrabajoFinal) + (notaAsistencia * porcentajeAsistencia);
+
+                        if (notaFinal < (0.75 * maxNota)) {
+
+                            resultado = "Desaprobado";
+
+                        } 
+                        
+                        else if (notaFinal > (0.75 * maxNota)) {
+
+                            resultado = "Aprobado";
+
+                        }
+
+                        else {
+
+                            System.out.println("Error");
+
+                        }
+
+                        // Reporte
+                        System.out.println("--------------------------------------------------");
+                        System.out.println("Reporte de notas de " + nomE);
+                        System.out.println("--------------------------------------------------");
+                        System.out.println(" --------------- Reporte de notas --------------- ");
+                        System.out.println("--------------------------------------------------");
+                        System.out.println("      Item calificado    |        Nota            ");
+                        System.out.println("--------------------------------------------------");
+
+                        // Reporte - notas parcial
+                        for (int a = 0; a < (notasCalificaciónParciales.length); a++) {
+
+                            // Imprimir notras ingresadas
+                            System.out.println("          Nota " + (a + 1) + "°        |        " + notasCalificaciónParciales[a] + "           ");
+                            System.out.println("--------------------------------------------------");
+
+                        }
+                        
+                        // Reporte Examen final - Exposición - Trabajo final - 
+                        System.out.println("        Examen final     |         " + notaExamenFinal + "           ");
+                        System.out.println("--------------------------------------------------");
+                        System.out.println("        Exposición       |         " + notaExposicion + "           ");
+                        System.out.println("--------------------------------------------------");
+                        System.out.println("      Trabajo final      |         " + notaTrabajoFinal + "           ");
+                        System.out.println("--------------------------------------------------");
+                        System.out.println("       Asistencia        |         " + notaAsistencia + "           ");
+                        System.out.println("--------------------------------------------------");
+
+                        // Aprobaod o no
+                        System.out.println("       Resultado         |         " + resultado + "           ");
+                        System.out.println("       Nota final        |         " + notaFinal + "           ");
+                        
 
                     }
 
@@ -819,6 +1097,6 @@ public class promedioNotas {
 
         System.out.println("Gracias por usar software J");
 
-
+        leert.close();
     }
 }
