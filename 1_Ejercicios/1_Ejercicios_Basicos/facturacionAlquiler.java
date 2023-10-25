@@ -58,9 +58,6 @@ public class facturacionAlquiler {
 
         userArray[1] = "empleado123";// empleado123
         passArray[1] = "passEmpleado123";// pass123
-    
-        // prueba features
-
 
         // Variable usuario
 
