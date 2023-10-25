@@ -733,7 +733,7 @@ public class promedioNotas {
                             System.out.println(" ");
                             System.out.println("Ingresa la notas del parcial: ");
 
-                            for (int i = 0; i < notasCalificaciónParciales.length; i++) {
+                            for (int i = 0; i < numParciales; i++) {
 
                                 // Re inicio de variable
                                 operación = 2;
