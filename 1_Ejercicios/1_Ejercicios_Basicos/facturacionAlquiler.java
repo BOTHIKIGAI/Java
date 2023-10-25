@@ -79,9 +79,9 @@ public class facturacionAlquiler {
         int diasExtrasAlquilados = 0; // almacenar el numero extras de dias alquilados
         int valorAlquiler = 35000; // almacenara el valor de alquilar un equipo por dia 
         String tipoAlquiler = ""; // almacenara el tipo de alquiler (dentro de la ciudad, fuera de la ciudad y dentro del establecimiento)
-        float sobreCargoFC = 0.5f; // almacenara el valor del sobrecargo al ser un alquiler fuera de la ciudad
-        float descuentoDC = 0.2f; // almacenara el valor del descuento por alquilar dentro dentro del establecimiento 
-        float descuentoDA = 0.2F; // almacenara el valor del descuento por dia extra de alquiler extra
+        float sobreCargoFC = 0.05f; // almacenara el valor del sobrecargo al ser un alquiler fuera de la ciudad
+        float descuentoDC = 0.02f; // almacenara el valor del descuento por alquilar dentro dentro del establecimiento 
+        float descuentoDA = 0.02F; // almacenara el valor del descuento por dia extra de alquiler extra
         String mailCliente = ""; // almacenara el mail del cliente
 
         // Reglas de negocio
@@ -146,6 +146,35 @@ public class facturacionAlquiler {
                 opcionMenu = leerT.nextInt();
 
                 if (opcionMenu == 1) {
+
+                    //Condiciones de alquielr
+                    System.out.println(" ");
+                    System.out.println("---------------------------------------------------------------");
+                    System.out.println("|                     Condiciones de Alquiler                  |");
+                    System.out.println("---------------------------------------------------------------");
+                    System.out.println("| Nombre del cliente      | El nombre del cliente no debe      |");
+                    System.out.println("|                         | contener espacios y se remplazan   |");
+                    System.out.println("|                         | por raya al piso.                  |"); 
+                    System.out.println("---------------------------------------------------------------");
+                    System.out.println("| Dias de alquiler        | Se debe alquilar min. 2 y max " +maxDiasAlquiler+ "  |");
+                    System.out.println("---------------------------------------------------------------");
+                    System.out.println("| Opciones de alquiler    | Las opciones son tres y se dividen |");
+                    System.out.println("|                         | en dentro de la ciudad, afuera de  |");
+                    System.out.println("|                         | en dentro de la ciudad y dentro del|");
+                    System.out.println("|                         | local.                             |");
+                    System.out.println("---------------------------------------------------------------");
+                    System.out.println("| Alquiler equipos        | Existen diferentes tipos de equipos|");
+                    System.out.println("|                         | pc de escritorio, laptop y tablet. |");
+                    System.out.println("---------------------------------------------------------------");
+                    System.out.println("| Metodo de pago          | El metodo de pago es en efectivo o |");
+                    System.out.println("|                         | tarjeta.                           |");
+                    System.out.println("---------------------------------------------------------------");
+                    System.out.println("| Descuento               | Descuento en el local   -> " + (descuentoDC*100) + "%    |");
+                    System.out.println("|                         | Descuento por dia extra -> " + (descuentoDA*100) + "%    |");
+                    System.out.println("|                         | Descuento por dia extra -> " + (descuentoDA*100) + "%    |");
+                    System.out.println("---------------------------------------------------------------");
+                    System.out.println("| Sobre cargo             | Sobre cargo             -> " + (sobreCargoFC*100) + "%    |");
+                    System.out.println("---------------------------------------------------------------");
 
                     // Empezar facturación
                     System.out.println(" ");
@@ -236,7 +265,9 @@ public class facturacionAlquiler {
                     while (operacion == 2) {
 
                         System.out.println("Reglas de alquiler");
+                        System.out.println(" ");
                         System.out.println("Minimo numero dias de alquiler -> 2 | Maximo numero de alquiler -> " + maxDiasAlquiler );
+                        System.out.println(" ");
                         System.out.println("¿Cuantos dias se alquilo? ");
                         System.out.print("Respuesta: ");
                         diasAlquilados = leerT.nextInt();
@@ -261,7 +292,7 @@ public class facturacionAlquiler {
 
                         System.out.println("Ingrese el tipo de alquiler: ");
                         System.out.println(" ");
-                        System.out.println("Dentro de la ciudad = 1");
+                        System.out.println("Dentro de la ciudad (Bogotá D.C) = escriba 1 ");
                         System.out.println("Fuera de la ciudad  = 2");
                         System.out.println("Dentro de la ciudad = 3");
                         System.out.println(" ");
@@ -328,7 +359,7 @@ public class facturacionAlquiler {
                             else {
 
                                 System.out.println(" ");
-                                System.out.print("Dias extras alquilados: ");
+                                System.out.println("Dias extras alquilados: ");
                                 System.out.println("Respuesta: ");
                                 diasExtrasAlquilados = leerT.nextInt();
                                 System.out.println(" ");
