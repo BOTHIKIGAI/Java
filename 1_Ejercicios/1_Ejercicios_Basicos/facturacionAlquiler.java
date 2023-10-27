@@ -70,6 +70,7 @@ public class facturacionAlquiler {
         String tipoCliente = ""; // Almacenar si es un cliente natural o juridico
         String nombreEmpresa = ""; // Nombre de la empresa
         int idCliente = random.nextInt(999); // Generara un id random para el cliente entre 0 a 999
+        int idFactura = random.nextInt(999); // Generara un id random para la factura entre 0 a 999
 
         // Variables facturación
 
@@ -396,7 +397,7 @@ public class facturacionAlquiler {
 
                             System.out.println(" ");
                             System.out.println("¿Se realizaron dias extras de alquileres? Si = 1 y No = 2");
-                            System.out.println("Respuesta: ");
+                            System.out.print("Respuesta: ");
                             pregunta = leerT.nextInt();
                             System.out.println(" ");
 
@@ -411,8 +412,7 @@ public class facturacionAlquiler {
                             else {
 
                                 System.out.println(" ");
-                                System.out.println("Dias extras alquilados: ");
-                                System.out.println("Respuesta: ");
+                                System.out.print("Dias extras alquilados: ");
                                 diasExtrasAlquilados = leerT.nextInt();
                                 System.out.println(" ");
                                 
@@ -475,8 +475,6 @@ public class facturacionAlquiler {
 
                     }
 
-                    
-                
 
                     // Correo
 
@@ -510,7 +508,32 @@ public class facturacionAlquiler {
 
                     // Facturación
 
-
+                    System.out.println(" ");
+                    System.out.println("///////////////////////////////////////// ");
+                    System.out.println("|      Fecha de facturación: " + fechaHoy);
+                    System.out.println("|      Factura de alquiler No. " + idFactura);
+                    System.out.println("|      Nombre del cliente: " + nombreCliente);
+                    System.out.println("|      Id del cliente: " + idCliente);
+                    System.out.println("|      Tipo de cliente: " + tipoCliente);
+                    System.out.println("|      Nombre de la empresa: " + nombreEmpresa);
+                    System.out.println("|--------------------------------------");
+                    System.out.println("|      Detalles del alquiler:");
+                    System.out.println("|      - Numero de equipos alquilados: " + numAlquilados);
+                    System.out.println("|      - Dias de alquiler: " + diasAlquilados);
+                    System.out.println("|      - Tipo de alquiler: " + tipoAlquiler);
+                    System.out.println("|      - Sitio de alquiler: " + sitioAlquiler);
+                    System.out.println("|      - Dias extras de alquiler: " + diasExtrasAlquilados);
+                    System.out.println("|--------------------------------------");
+                    System.out.println("|      Detalles de facturación:");
+                    System.out.println("|      - Valor de alquiler por día: " + valorAlquiler);
+                    System.out.println("|      - Valor de alquiler por días extras: " + valorFacturacionDiasExtras);
+                    System.out.println("|      - Valor de alquiler total: " + (valorFacturacionBase + valorFacturacionDiasExtras));
+                    System.out.println("|--------------------------------------");
+                    System.out.println("|      Información de contacto:");
+                    System.out.println("|      - Correo del cliente: " + mailCliente);
+                    System.out.println("///////////////////////////////////////// ");
+                    System.out.println(" ");
+                    
 
                     // Salir o Seguir en la sesión
 
