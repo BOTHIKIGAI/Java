@@ -79,14 +79,20 @@ public class facturacionAlquiler {
         int diasExtrasAlquilados = 0; // almacenar el numero extras de dias alquilados
         int valorAlquiler = 35000; // almacenara el valor de alquilar un equipo por dia 
         String tipoAlquiler = ""; // almacenara el tipo de alquiler (dentro de la ciudad, fuera de la ciudad y dentro del establecimiento)
+        String sitioAlquiler = ""; // almacenara el sitio donde se realizo el alquiler
         float sobreCargoFC = 0.05f; // almacenara el valor del sobrecargo al ser un alquiler fuera de la ciudad
         float descuentoDC = 0.02f; // almacenara el valor del descuento por alquilar dentro dentro del establecimiento 
         float descuentoDA = 0.02F; // almacenara el valor del descuento por dia extra de alquiler extra
         String mailCliente = ""; // almacenara el mail del cliente
 
+        // Valor facturación
+        float valorFacturacionBase = 0; // almacenara el valor total de la facturación del cliente con descuento o sobrecargo
+        float valorFacturacionDiasExtras = 0; // almacenara el valor total sumado a la facturación por los dias esxtras
+
         // Reglas de negocio
         int numEquiposEmpresa = 100; // almacenar el numero de equipos que tiene la empresa
         int maxDiasAlquiler = 183; // almacenara el numero de equipos maximso que se puede alquilar
+        float maxDescuentoAlquilerDiasExtra = 0.2f; // almacenar el valor maximo que puede tener el alquiler por dia extra
 
         // Variables de control
 
@@ -268,6 +274,8 @@ public class facturacionAlquiler {
                         System.out.println(" ");
                         System.out.println("Minimo numero dias de alquiler -> 2 | Maximo numero de alquiler -> " + maxDiasAlquiler );
                         System.out.println(" ");
+                        System.out.println("Cada alquiler de equipo tiene un precio de " + valorAlquiler + " pesos por dia");
+                        System.out.println("");
                         System.out.println("¿Cuantos dias se alquilo? ");
                         System.out.print("Respuesta: ");
                         diasAlquilados = leerT.nextInt();
@@ -281,6 +289,8 @@ public class facturacionAlquiler {
 
                         else if (diasAlquilados >= 2 || diasAlquilados <= maxDiasAlquiler) {
                             operacion = 1;
+                            System.out.println("El alquiler se realizo por " + diasAlquilados + " dias");
+                            System.out.println("Tendra un valor de " + (diasAlquilados*valorAlquiler) + " pesos");
                             System.out.println(" ");
                         }
 
@@ -294,7 +304,7 @@ public class facturacionAlquiler {
                         System.out.println(" ");
                         System.out.println("Dentro de la ciudad (Bogotá D.C) = escriba 1 ");
                         System.out.println("Fuera de la ciudad  = 2");
-                        System.out.println("Dentro de la ciudad = 3");
+                        System.out.println("Alquiler en el local = 3");
                         System.out.println(" ");
                         System.out.print("Respuesta: ");
                         tipoAlquiler = leerT.next(); 
@@ -303,7 +313,9 @@ public class facturacionAlquiler {
                         if (tipoAlquiler.equals("1")) {
 
                             System.out.println("Tipo de alquiler -> Dentro de la ciudad");
+                            System.out.println("El alquiler se realizo en Bogota D.C");
                             tipoAlquiler = "Dentro de la ciudad";
+                            sitioAlquiler = "Bogota D.C";
 
                             //Cerrar ciclo
                             operacion = 2;
@@ -313,7 +325,11 @@ public class facturacionAlquiler {
                         else if (tipoAlquiler.equals("2")) {
 
                             System.out.println("Tipo de alquiler -> Fuera de la ciudad");
+                            System.out.println("Sobre cargo añadido por alquiler fuera de la ciudad -> " + (sobreCargoFC*100) + "%");
                             tipoAlquiler = "Fuera de la ciudad";
+                            System.out.println("");
+                            System.out.print("Ingrese el sitio donde se realizo el alquiler: ");
+                            sitioAlquiler = leerT.next();
 
                             //Cerrar ciclo
                             operacion = 2;
@@ -321,8 +337,11 @@ public class facturacionAlquiler {
 
                         else if (tipoAlquiler.equals("3")) {
 
-                            System.out.println("Tipo de alquiler -> Fuera de la ciudad");
-                            tipoAlquiler = "Fuera de la ciudad";
+                            System.out.println("Tipo de alquiler -> Alquiler en el local");
+                            System.out.println("Descuento añadido por alquiler en el local -> " + (descuentoDC*100) + "%");
+                            tipoAlquiler = "Alquiler en el local";
+                            System.out.println("");
+                            sitioAlquiler = "Local - Cr 115 # 70 - 50";
 
                             //Cerrar ciclo
                             operacion = 2;
@@ -335,6 +354,39 @@ public class facturacionAlquiler {
                         }
 
                     }
+
+                    // Recordatorio precio actual del alquiler por dia y descuento o sobrecargo
+
+                    System.out.println(" ");
+
+                    if (tipoAlquiler.equals("Dentro de la ciudad")) {
+
+                        System.out.println("El valor actual del alquiler es de " + valorAlquiler + " pesos");
+                        System.out.println("El descuento por alquiler en el local es de " + (descuentoDC*100) + "%");
+                        valorFacturacionBase = valorAlquiler * diasAlquilados;
+                        System.out.println("El valor actual del alquiler es de " + (valorFacturacionBase + " pesos"));
+
+                    }
+
+                    else if (tipoAlquiler.equals("Fuera de la ciudad")) {
+
+                        System.out.println("El valor actual del alquiler es de " + valorAlquiler + " pesos");
+                        System.out.println("El sobrecargo por alquiler fuera de la ciudad es de " + (sobreCargoFC*100) + "%");
+                        valorFacturacionBase = (valorAlquiler * diasAlquilados) + ((valorAlquiler * diasAlquilados) * sobreCargoFC);
+                        System.out.println("El valor actual del alquiler con sobrecargo es de " + (valorAlquiler + (valorAlquiler * sobreCargoFC)) + " pesos");
+
+                    }
+
+                    else if (tipoAlquiler.equals("Alquiler en el local")) {
+
+                        System.out.println("El valor actual del alquiler es de " + valorAlquiler + " pesos");
+                        System.out.println("El descuento por alquiler en el local es de " + (descuentoDC*100) + "%");
+                        valorFacturacionBase = (valorAlquiler * diasAlquilados) - ((valorAlquiler * diasAlquilados) * descuentoDC);
+                        System.out.println("El valor actual del alquiler con descuento es de " + (valorAlquiler - (valorAlquiler*descuentoDC)) + " pesos");
+
+                    }
+
+                    System.out.println("El valor actual del alquiler con sobrecargo o descuento es de " + valorFacturacionBase + " pesos");
 
                     // Dias extra
 
@@ -384,7 +436,8 @@ public class facturacionAlquiler {
 
                                 else if (diasAlquilados <= (maxDiasAlquiler - diasAlquilados)) {
 
-                                    System.out.println("El numero extras de alquiler es: " + (maxDiasAlquiler - diasAlquilados));
+                                    System.out.println("El numero extras de alquiler es: " + diasExtrasAlquilados);
+                                    operacion = 1;
 
                                 }
 
@@ -393,6 +446,37 @@ public class facturacionAlquiler {
                         }
 
                     }
+
+                    // Recordatorio Precio valor a pagar por los dias extras
+
+                    System.out.println(" ");
+                    System.out.println("El valor actual del alquiler es de " + valorFacturacionBase + " pesos");
+                    System.out.println(" ");
+                    
+                    // Condicional - Dias extras
+
+                    if (diasExtrasAlquilados == 0) {
+
+                        valorFacturacionDiasExtras = 0;
+
+                    }
+
+                    else if (diasExtrasAlquilados >= 10) {
+
+                        valorFacturacionDiasExtras = (valorAlquiler * diasExtrasAlquilados) - ((valorAlquiler * diasExtrasAlquilados) * maxDescuentoAlquilerDiasExtra);
+                        System.out.println("El valor actual del alquiler por dias extras es de " + valorFacturacionDiasExtras + " pesos");
+
+                    }
+
+                    else if (diasExtrasAlquilados < 10) {
+
+                        valorFacturacionDiasExtras = (valorAlquiler * diasExtrasAlquilados) - ((valorAlquiler * diasExtrasAlquilados) * descuentoDA);
+                        System.out.println("El valor actual del alquiler por dias extras es de " + valorFacturacionDiasExtras + " pesos");
+
+                    }
+
+                    
+                
 
                     // Correo
 
@@ -423,6 +507,8 @@ public class facturacionAlquiler {
                         } 
                         
                     }
+
+                    // Facturación
 
 
 
