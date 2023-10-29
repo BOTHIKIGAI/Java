@@ -548,7 +548,7 @@ public class facturacionAlquiler {
                 else if (opcionMenu == 2) { 
                     
                     System.out.println(" ");
-
+                    inicioSesion = 2;
 
                 }
 
