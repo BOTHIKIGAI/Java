@@ -36,34 +36,43 @@ public class facturacionAlquiler {
 
         Scanner leerT = new Scanner(System.in);
 
+
         // Clase fecha
 
         Date fecha = new Date();
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
 
+
         // Clase math - random
 
         Random random = new Random();
+
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Variables
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // Inicio sesión
+        // INICIO SESIÓN
 
         String[] userArray = new String[10]; // Unicamente se puede ingresar 10 usuario
         String[] passArray = new String[10]; // Una contraseña por cada usuario
 
-        // Ingreso credenciales empleado a userArray y pasArray
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // CREDENCIALES DE USUARIO
 
         userArray[1] = "empleado123";// empleado123
         passArray[1] = "passEmpleado123";// pass123
 
-        // Variable usuario
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // VARIABLE DE USUARIO
 
         String user = "";
         String pass = "";
 
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Variables cliente
         
         String nombreCliente = ""; // Almacenar nombre cliente
@@ -72,9 +81,14 @@ public class facturacionAlquiler {
         int idCliente = random.nextInt(999); // Generara un id random para el cliente entre 0 a 999
         int idFactura = random.nextInt(999); // Generara un id random para la factura entre 0 a 999
 
-        // Variables facturación
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // VARIABLES DE FACTURACIÓN
 
         int numAlquilados = 0; // almacenar el numero de equipos alquilados por el cliente
+        int numAlquiladosPc = 0; // almacenar el numero de equipos alquilados de tipo pc por el cliente
+        int numAlquiladosLaptop = 0; // almacenar el numero de equipos alquilados de tipo laptop por el cliente
+        int numAlquiladosTablet = 0; // almacenar el numero de equipos alquilados de tipo tablet por el cliente
         String fechaHoy = formato.format(fecha); // Fecha en la que se genero la facturación
         int diasAlquilados = 0; // almacenara el numero de dias que se realizo el 
         int diasExtrasAlquilados = 0; // almacenar el numero extras de dias alquilados
@@ -86,22 +100,29 @@ public class facturacionAlquiler {
         float descuentoDA = 0.02F; // almacenara el valor del descuento por dia extra de alquiler extra
         String mailCliente = ""; // almacenara el mail del cliente
 
-        // Valor facturación
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // VALOR FACTURACIÓN
         float valorFacturacionBase = 0; // almacenara el valor total de la facturación del cliente con descuento o sobrecargo
         float valorFacturacionDiasExtras = 0; // almacenara el valor total sumado a la facturación por los dias esxtras
 
-        // Reglas de negocio
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // REGLAS DE NEGOCIO
         int numEquiposEmpresa = 100; // almacenar el numero de equipos que tiene la empresa
         int maxDiasAlquiler = 183; // almacenara el numero de equipos maximso que se puede alquilar
         float maxDescuentoAlquilerDiasExtra = 0.2f; // almacenar el valor maximo que puede tener el alquiler por dia extra
 
-        // Variables de control
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // VARIABLES DE CONTROL
 
         int inicioSoftware = 1; // variable para el ciclo while de salir y entrar en sesión
         int inicioSesion = 1; // variable para el ciclo while de realizar nuevamente consultas
         int opcionMenu = 0; // almacenar las respuestas de las opciones de menu
         int operacion = 1; // variable para el ciclo while de realizar operaciones hasta que se cumpla la regla de negocio
         int pregunta = 1; // variable para el condicionales de preguntas 
+
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Inicicio del software
@@ -257,8 +278,59 @@ public class facturacionAlquiler {
                             System.out.println(" ");
                             System.out.println("No se puede alquilar menos de dos equipos ni mas de " + numEquiposEmpresa );
                             System.out.println(" ");
+                        }
 
-                        } else {
+                        else if (numAlquilados >= 2 && numAlquilados <= numEquiposEmpresa) {
+
+                            while (operacion == 1) {
+
+                                System.out.println("Si no alquilo ningun equipo agregue 0");
+                                System.out.println("");
+                                System.out.println("¿Cuantos equipos de computo tipo pc?");
+                                System.out.print("Cantidad: ");
+                                numAlquiladosPc = leerT.nextInt();
+                                System.out.println("¿Cuantos equipos de computo tipo laptop?");
+                                System.out.print("Cantidad: ");
+                                numAlquiladosLaptop = leerT.nextInt();
+                                System.out.println("¿Cuantos equipos de computo tipo tablet?");
+                                System.out.print("Cantidad: ");
+                                numAlquiladosTablet = leerT.nextInt();
+                                System.out.println(" ");
+
+                                if (numAlquiladosPc + numAlquiladosLaptop + numAlquiladosTablet != numAlquilados) {
+
+                                    System.out.println(" ");
+                                    System.out.println("El numero de equipos alquilados no coincide con la suma de los equipos alquilados por tipo");
+                                    System.out.println(" ");
+
+                                }
+
+                                else if (numAlquiladosPc + numAlquiladosLaptop + numAlquiladosTablet == numAlquilados) {
+
+                                    System.out.println(" ");
+                                    System.out.println("El numero de equipos alquilados es: " + numAlquilados);
+                                    System.out.println("El numero de equipos alquilados tipo pc es: " + numAlquiladosPc);
+                                    System.out.println("El numero de equipos alquilados tipo laptop es: " + numAlquiladosLaptop);
+                                    System.out.println("El numero de equipos alquilados tipo tablet es: " + numAlquiladosTablet);
+                                    operacion = 2;
+                                    System.out.println(" ");
+
+                                }
+
+                                else {
+                                        
+                                    System.out.println("Error");
+
+                                }
+
+                            }
+                            
+                            operacion = 2;
+                            System.out.println(" ");
+
+                        } 
+                        
+                        else {
 
                             operacion = 2;
                             System.out.println(" ");
@@ -359,31 +431,26 @@ public class facturacionAlquiler {
                     // Recordatorio precio actual del alquiler por dia y descuento o sobrecargo
 
                     System.out.println(" ");
+                    System.out.println("El valor actual del alquiler es de " + valorAlquiler + " pesos");
 
                     if (tipoAlquiler.equals("Dentro de la ciudad")) {
 
-                        System.out.println("El valor actual del alquiler es de " + valorAlquiler + " pesos");
                         System.out.println("El descuento por alquiler en el local es de " + (descuentoDC*100) + "%");
                         valorFacturacionBase = valorAlquiler * diasAlquilados;
-                        System.out.println("El valor actual del alquiler es de " + (valorFacturacionBase + " pesos"));
 
                     }
 
                     else if (tipoAlquiler.equals("Fuera de la ciudad")) {
 
-                        System.out.println("El valor actual del alquiler es de " + valorAlquiler + " pesos");
                         System.out.println("El sobrecargo por alquiler fuera de la ciudad es de " + (sobreCargoFC*100) + "%");
                         valorFacturacionBase = (valorAlquiler * diasAlquilados) + ((valorAlquiler * diasAlquilados) * sobreCargoFC);
-                        System.out.println("El valor actual del alquiler con sobrecargo es de " + (valorAlquiler + (valorAlquiler * sobreCargoFC)) + " pesos");
 
                     }
 
                     else if (tipoAlquiler.equals("Alquiler en el local")) {
 
-                        System.out.println("El valor actual del alquiler es de " + valorAlquiler + " pesos");
                         System.out.println("El descuento por alquiler en el local es de " + (descuentoDC*100) + "%");
                         valorFacturacionBase = (valorAlquiler * diasAlquilados) - ((valorAlquiler * diasAlquilados) * descuentoDC);
-                        System.out.println("El valor actual del alquiler con descuento es de " + (valorAlquiler - (valorAlquiler*descuentoDC)) + " pesos");
 
                     }
 
