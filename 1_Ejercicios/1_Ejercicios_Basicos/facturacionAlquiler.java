@@ -121,7 +121,6 @@ public class facturacionAlquiler {
         int inicioSesion = 1; // variable para el ciclo while de realizar nuevamente consultas
         int opcionMenu = 0; // almacenar las respuestas de las opciones de menu
         int operacion = 1; // variable para el ciclo while de realizar operaciones hasta que se cumpla la regla de negocio
-        int operacionII = 1; // variable para el ciclo while de realizar operaciones hasta que se cumpla la regla de negocio
         int pregunta = 1; // variable para el condicionales de preguntas 
 
 
