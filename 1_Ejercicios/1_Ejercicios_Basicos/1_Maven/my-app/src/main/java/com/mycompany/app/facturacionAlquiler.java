@@ -97,6 +97,7 @@ public class facturacionAlquiler {
         float sobreCargoFC = 0.05f; // almacenara el valor del sobrecargo al ser un alquiler fuera de la ciudad
         float descuentoDC = 0.02f; // almacenara el valor del descuento por alquilar dentro dentro del establecimiento 
         float descuentoDA = 0.02F; // almacenara el valor del descuento por dia extra de alquiler extra
+        String metodoPago = ""; // almacenara el metodo de pago
         String mailCliente = ""; // almacenara el mail del cliente
 
 
@@ -604,6 +605,41 @@ public class facturacionAlquiler {
                         
                     }
 
+                    while (operacion == 2) {
+                        
+                        System.out.println("");
+                        System.out.println("Metodos de pago");
+                        System.out.println(" ");
+                        System.out.println("----------------");
+                        System.out.println("| 1. Efectivo |");
+                        System.out.println("| 2. Tarjeta  |");
+                        System.out.println("----------------");
+                        System.out.println(" ");
+                        System.out.println("Ingrese el metodo de pago (numero): ");
+                        metodoPago = leerT.next();
+                        
+                        if (metodoPago.equals("1")) {
+
+                            System.out.println("El metodo de pago es en efectivo");
+                            operacion = 1;
+
+                        }
+
+                        else if (metodoPago.equals("2")) {
+
+                            System.out.println("El metodo de pago es en tarjeta");
+                            operacion = 1;
+
+                        }
+
+                        else {
+
+                            System.out.println("Error");
+
+                        }
+
+                    }
+
                     System.out.println("---------------------------------------------------------------");
                     System.out.println("---------------------------------------------------------------");
 
@@ -633,6 +669,7 @@ public class facturacionAlquiler {
                     System.out.println("|      - Valor de alquiler por día: " + valorAlquiler);
                     System.out.println("|      - Valor de alquiler por días extras: " + valorFacturacionDiasExtras);
                     System.out.println("|      - Valor de alquiler total: " + (valorFacturacionBase + valorFacturacionDiasExtras));
+                    System.out.println("       - Metodo de pago " + metodoPago);
                     System.out.println("|--------------------------------------");
                     System.out.println("|      Información de contacto:");
                     System.out.println("|      - Correo del cliente: " + mailCliente);
@@ -690,6 +727,7 @@ public class facturacionAlquiler {
                                     "|      - Valor de alquiler por día: " + valorAlquiler + "\n" +
                                     "|      - Valor de alquiler por días extras: " + valorFacturacionDiasExtras + "\n" +
                                     "|      - Valor de alquiler total: " + (valorFacturacionBase + valorFacturacionDiasExtras) + "\n" +
+                                    "       - Metodo de pago " + metodoPago + "\n" +
                                     "|--------------------------------------\n" +
                                     "|      Información de contacto:\n" +
                                     "|      - Correo del cliente: " + mailCliente + "\n" +
@@ -698,7 +736,7 @@ public class facturacionAlquiler {
                         message.setText(messageContent);
                         // Enviar el correo
                         Transport.send(message);
-                        System.out.println("Correo enviado exitosamente.");
+                        System.out.println("Correo enviado exitosamente. Revise su correo (realmente funciona el envio de correo)");
 
                     } catch (MessagingException e) {
                         throw new RuntimeException(e);
