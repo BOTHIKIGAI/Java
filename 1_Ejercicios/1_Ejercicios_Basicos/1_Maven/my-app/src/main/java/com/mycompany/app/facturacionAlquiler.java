@@ -50,16 +50,37 @@ public class facturacionAlquiler {
 
         // INICIO SESIÓN
 
-        String[] userArray = new String[10]; // Unicamente se puede ingresar 10 usuario
-        String[] passArray = new String[10]; // Una contraseña por cada usuario
+        // EMPLEADO
+        String[] userEmpleadoArray = new String[10]; // Unicamente se puede ingresar 10 usuario
+
+        String[] passEmpleadoArray = new String[10]; // Una contraseña por cada usuario
+
+        // ADMINISTRADOR
+        String[] userAdminstradorArray = new String[10]; // Unicamente se puede ingresar 10 usuario
+        String[] passAdministradorArray = new String[10]; // Una contraseña por cada usuario
 
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // CREDENCIALES DE USUARIO
 
-        userArray[1] = "empleado123";// empleado123
-        passArray[1] = "passEmpleado123";// pass123
+        // CREDENCIALES DE EMPLEADO
+        userEmpleadoArray[1] = "empleado123";
+        passEmpleadoArray[1] = "passEmpleado123";
 
+        userEmpleadoArray[2] = "empleado456";
+        passEmpleadoArray[2] = "passEmpleado456";
+
+        // CREDENCIALES DE ADMINISTRADOR
+
+        userAdminstradorArray[1] = "admin123"; 
+        passAdministradorArray[1] = "passAdmin123";
+
+        userAdminstradorArray[2] = "admin456";
+        passAdministradorArray[2] = "passAdmin456";
+
+        // UBICACIÓN CREDENCIALES  
+        int ubicacionCredencialesArrayUsuarios = 0; // Ubicación de las credenciales en el array Usuario
+        int ubicacionCredencialesArrayPass = 0; // Ubicación de las credenciales en el array Pass
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // VARIABLE DE USUARIO
@@ -137,6 +158,9 @@ public class facturacionAlquiler {
 
         while (inicioSoftware == 1 ) {
 
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // INGRESO DE CREDENCIALES
+
             // Ingreso credenciales
             System.out.print("Ingrese su usuario: "); 
             user = leerT.next();
@@ -150,659 +174,710 @@ public class facturacionAlquiler {
             // Condicional - Inicio Sesión
             // Si las credenciales ingresadas son las correctas ingresara al sistema, de lo contrario arrogara error y las solicitar nuevamente
 
-            if (user.equals("empleado123") && pass.equals("pass123")) { 
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // TIPO DE SESIÓN A INICIAR
+
+            System.out.println(" ");
+            System.out.println("¿Que tipo de sesión desea iniciar?");
+            System.out.println(" ");
+            System.out.println("Empleado = 1");
+            System.out.println("Administrador = 2");
+            System.out.println("");
+            System.out.print("Respuesta: ");
+            opcionMenu = leerT.nextInt();
+
+            if (opcionMenu == 1) {
+
+                // MENSAJE BIENVENIDA
 
                 System.out.println(" ");
-                System.out.println("Bienvenido " + user);
+                System.out.println("///////////////////////////////////////// ");
+                System.out.println("      Inicio sesión como empleado");
+                System.out.println("///////////////////////////////////////// ");
                 System.out.println(" ");
 
-                while (inicioSesion == 1) {
+                // UBICACIÓN CREDENCIALES
 
-                // Menu de opciones
-                
-                System.out.println(" ");
-                System.out.println("¿Que desea consultar?");
-                System.out.println(" ");
-                System.out.println("---------------------------------------------------------------");
-                System.out.println("|   Opcion   |                  Descripción                   |");
-                System.out.println("---------------------------------------------------------------");
-                System.out.println("|     1      |              realizar facturación              |");
-                System.out.println("|     2      |                     Salir                      |");
-                System.out.println("---------------------------------------------------------------");
-                System.out.println(" ");  
-                System.out.print("Respuesta: ");
-                opcionMenu = leerT.nextInt();
-
-                if (opcionMenu == 1) {
-
-                    //Condiciones de alquielr
-                    System.out.println(" ");
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("|                     Condiciones de Alquiler                  |");
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("| Nombre del cliente      | El nombre del cliente no debe      |");
-                    System.out.println("|                         | contener espacios y se remplazan   |");
-                    System.out.println("|                         | por raya al piso.                  |"); 
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("| Dias de alquiler        | Se debe alquilar min. 2 y max " +maxDiasAlquiler+ "  |");
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("| Opciones de alquiler    | Las opciones son tres y se dividen |");
-                    System.out.println("|                         | en dentro de la ciudad, afuera de  |");
-                    System.out.println("|                         | en dentro de la ciudad y dentro del|");
-                    System.out.println("|                         | local.                             |");
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("| Alquiler equipos        | Existen diferentes tipos de equipos|");
-                    System.out.println("|                         | pc de escritorio, laptop y tablet. |");
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("| Metodo de pago          | El metodo de pago es en efectivo o |");
-                    System.out.println("|                         | tarjeta.                           |");
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("| Descuento               | Descuento en el local   -> " + (descuentoDC*100) + "%    |");
-                    System.out.println("|                         | Descuento por dia extra -> " + (descuentoDA*100) + "%    |");
-                    System.out.println("|                         | Descuento por dia extra -> " + (descuentoDA*100) + "%    |");
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("| Sobre cargo             | Sobre cargo             -> " + (sobreCargoFC*100) + "%    |");
-                    System.out.println("---------------------------------------------------------------");
-
-                    // Empezar facturación
-                    System.out.println(" ");
-                    System.out.println("<-- Empezar facturación -->");
-                    System.out.println(" ");
-
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("---------------------------------------------------------------");
-
-                    // Nombre del cliente
-                    System.out.print("Nombre del cliente: ");
-                    nombreCliente = leerT.next(); 
-                    System.out.println(" ");  
+                // USUARIO 
+                for (int i = 0; i < userEmpleadoArray.length; i++) {
                     
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("---------------------------------------------------------------");
+                    if(userEmpleadoArray[i] == user) {
 
-                    while (operacion == 1) {
-
-                        // Tipo cliente
-                        System.out.print("Tipo cliente (Juridico o Natural): ");                        
-                        tipoCliente = leerT.next();
-
-                        if (tipoCliente.equals("Juridico") || tipoCliente.equals("juridico") || tipoCliente.equals("Natural") || tipoCliente.equals("natural") ) {
-
-                            operacion = 2;
-                            System.out.println(" "); 
-
-                        }
-
-                        else {
-
-                            System.out.println(" ");
-                            System.out.println("Asegurate de haber ingresado el dato correctamente");
-                            System.out.println(" ");
-
-                        }
+                        ubicacionCredencialesArrayUsuarios = i;
+                        break;
 
                     }
 
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("---------------------------------------------------------------");
+                }
 
-                    while (operacion == 2) {
+                // CONTRASEÑA
 
-                        // Nombre empresa
-                        System.out.println("¿El cliente tiene o pertenece a una empresa? Si = 1   No = 2");
-                        System.out.print("Pregunta: ");
-                        pregunta = leerT.nextInt();
+                for (int i = 0; i < passEmpleadoArray.length; i++) {
 
-                        if (pregunta != 1) {
-
-                            nombreEmpresa = "-----//-----";
-                            operacion = 1; // cerrar ciclo
-                            pregunta = 1; // reinicio de variable 
-
-                        }
-
-                        else {
-
-                            System.out.println(" ");
-                            System.out.print("Ingrese el nombre de la empresa: ");
-                            nombreEmpresa = leerT.next();
-                            System.out.println(" ");
-                            operacion = 1; // cerrar ciclo                 
-
-                        }
-                    
-                    }
-
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("---------------------------------------------------------------");
-
-                    // Ingresar numero de equipos alquilados
-                    while (operacion == 1) {
-  
-                        // Numero de equipos alquilados
-                        System.out.println(" ");
-                        System.out.println("¿Cuantos equipos alquilo el cliente? (Min: 2 y Max: " + numEquiposEmpresa +")" );
-                        System.out.print("Num. equipos alquilados: ");
-                        numAlquilados = leerT.nextInt();
+                    if(passEmpleadoArray[i] == pass) {
                         
-                        if (numAlquilados < 2 || numAlquilados > numEquiposEmpresa) {
+                        ubicacionCredencialesArrayPass = i;
+                        break;
+                        
+                    }  
 
-                            System.out.println(" ");
-                            System.out.println("No se puede alquilar menos de dos equipos ni mas de " + numEquiposEmpresa );
-                            System.out.println(" ");
-                        }
+                }
 
-                        else if (numAlquilados >= 2 && numAlquilados <= numEquiposEmpresa) {
+                if (ubicacionCredencialesArrayUsuarios == ubicacionCredencialesArrayPass) {
 
-                            while (operacion == 1) {
+                    System.out.println(" ");
+                    System.out.println("Credenciales correctas");
+                    System.out.println(" ");
 
-                                System.out.println(" ");
-                                System.out.println("Si no alquilo ningun equipo agregue 0 de alguna de las categorias agregue cero");
-                                System.out.println("");
-                                System.out.println("¿Cuantos equipos de computo tipo pc?");
-                                System.out.print("Cantidad: ");
-                                numAlquiladosPc = leerT.nextInt();
-                                System.out.println("¿Cuantos equipos de computo tipo laptop?");
-                                System.out.print("Cantidad: ");
-                                numAlquiladosLaptop = leerT.nextInt();
-                                System.out.println("¿Cuantos equipos de computo tipo tablet?");
-                                System.out.print("Cantidad: ");
-                                numAlquiladosTablet = leerT.nextInt();
-                                System.out.println(" ");
+                    while (inicioSoftware == 1) {
 
-                                if (numAlquiladosPc + numAlquiladosLaptop + numAlquiladosTablet != numAlquilados) {
+                        System.out.println(" ");
+                        System.out.println("Bienvenido " + user);
+                        System.out.println(" ");
 
-                                    System.out.println(" ");
-                                    System.out.println("El numero de equipos alquilados no coincide con la suma de los equipos alquilados por tipo");
-                                    System.out.println(" ");
+                        while (inicioSesion == 1) {
 
-                                }
-
-                                else if (numAlquiladosPc + numAlquiladosLaptop + numAlquiladosTablet == numAlquilados) {
-
-                                    System.out.println(" ");
-                                    System.out.println("El numero de equipos alquilados es: " + numAlquilados);
-                                    System.out.println("El numero de equipos alquilados tipo pc es: " + numAlquiladosPc);
-                                    System.out.println("El numero de equipos alquilados tipo laptop es: " + numAlquiladosLaptop);
-                                    System.out.println("El numero de equipos alquilados tipo tablet es: " + numAlquiladosTablet);
-                                    operacion = 2;
-                                    System.out.println(" ");
-
-                                }
-
-                                else {
-                                        
-                                    System.out.println("Error");
-
-                                }
-
-                            }
+                            // Menu de opciones
                             
-                            operacion = 2;
                             System.out.println(" ");
-
-                        } 
-                        
-                        else {
-
-                            operacion = 2;
+                            System.out.println("¿Que desea consultar?");
                             System.out.println(" ");
-
-                        }
-                    
-                    }
-
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("---------------------------------------------------------------");
-
-                    // Dias alquilados
-
-                    while (operacion == 2) {
-
-                        System.out.println("Reglas de alquiler");
-                        System.out.println(" ");
-                        System.out.println("Minimo numero dias de alquiler -> 2 | Maximo numero de alquiler -> " + maxDiasAlquiler );
-                        System.out.println(" ");
-                        System.out.println("Cada alquiler de equipo tiene un precio de " + valorAlquiler + " pesos por dia");
-                        System.out.println("");
-                        System.out.println("¿Cuantos dias se alquilo? ");
-                        System.out.print("Respuesta: ");
-                        diasAlquilados = leerT.nextInt();
-
-                        if (diasAlquilados <= 0 || diasAlquilados > maxDiasAlquiler) { // Si dias alquilados es menor o igual a 0 o dialalquilados es mayor a 183
-                            System.out.println(" ");
-                            System.out.println("1. El numero de dias alquilados no puede ser menor a 2 o igual a 0");
-                            System.out.println("2. El numero de dias alquilados no puede ser mayor a " + maxDiasAlquiler + "dias");
-                            System.out.println(" ");
-                        }
-
-                        else if (diasAlquilados >= 2 || diasAlquilados <= maxDiasAlquiler) {
-                            operacion = 1;
-                            System.out.println("El alquiler se realizo por " + diasAlquilados + " dias");
-                            System.out.println("Tendra un valor de " + (diasAlquilados*valorAlquiler) + " pesos");
-                            System.out.println(" ");
-                            System.out.println("La fecha del alquiler es " + fechaHoy);
-                            System.out.println("Y terminara el " + fechaHoy.plusDays(diasAlquilados));
-                        }
-
-                    }
-
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("---------------------------------------------------------------");
-
-                    // Tipo alquiler
-
-                    while (operacion == 1) {
-
-                        System.out.println("Ingrese el tipo de alquiler: ");
-                        System.out.println(" ");
-                        System.out.println("Dentro de la ciudad (Bogotá D.C) = escriba 1 ");
-                        System.out.println("Fuera de la ciudad  = 2");
-                        System.out.println("Alquiler en el local = 3");
-                        System.out.println(" ");
-                        System.out.print("Respuesta: ");
-                        tipoAlquiler = leerT.next(); 
-                        System.out.println(" ");
-                        
-                        if (tipoAlquiler.equals("1")) {
-
-                            System.out.println("Tipo de alquiler -> Dentro de la ciudad");
-                            System.out.println("El alquiler se realizo en Bogota D.C");
-                            tipoAlquiler = "Dentro de la ciudad";
-                            sitioAlquiler = "Bogota D.C";
-
-                            //Cerrar ciclo
-                            operacion = 2;
-
-                        } 
-
-                        else if (tipoAlquiler.equals("2")) {
-
-                            System.out.println("Tipo de alquiler -> Fuera de la ciudad");
-                            System.out.println("Sobre cargo añadido por alquiler fuera de la ciudad -> " + (sobreCargoFC*100) + "%");
-                            tipoAlquiler = "Fuera de la ciudad";
-                            System.out.println("");
-                            System.out.print("Ingrese el sitio donde se realizo el alquiler: ");
-                            sitioAlquiler = leerT.next();
-
-                            //Cerrar ciclo
-                            operacion = 2;
-                        }
-
-                        else if (tipoAlquiler.equals("3")) {
-
-                            System.out.println("Tipo de alquiler -> Alquiler en el local");
-                            System.out.println("Descuento añadido por alquiler en el local -> " + (descuentoDC*100) + "%");
-                            tipoAlquiler = "Alquiler en el local";
-                            System.out.println("");
-                            sitioAlquiler = "Local - Cr 115 # 70 - 50";
-
-                            //Cerrar ciclo
-                            operacion = 2;
-                        }
-
-                        else {
-
-                            System.out.println("Error");
-
-                        }
-
-                    }
-
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("---------------------------------------------------------------");
-
-                    // Recordatorio precio actual del alquiler por dia y descuento o sobrecargo
-
-                    System.out.println(" ");
-                    System.out.println("El valor actual del alquiler es de " + valorAlquiler + " pesos");
-
-                    if (tipoAlquiler.equals("Dentro de la ciudad")) {
-
-                        System.out.println("El descuento por alquiler en el local es de " + (descuentoDC*100) + "%");
-                        valorFacturacionBase = valorAlquiler * diasAlquilados;
-
-                    }
-
-                    else if (tipoAlquiler.equals("Fuera de la ciudad")) {
-
-                        System.out.println("El sobrecargo por alquiler fuera de la ciudad es de " + (sobreCargoFC*100) + "%");
-                        valorFacturacionBase = (valorAlquiler * diasAlquilados) + ((valorAlquiler * diasAlquilados) * sobreCargoFC);
-
-                    }
-
-                    else if (tipoAlquiler.equals("Alquiler en el local")) {
-
-                        System.out.println("El descuento por alquiler en el local es de " + (descuentoDC*100) + "%");
-                        valorFacturacionBase = (valorAlquiler * diasAlquilados) - ((valorAlquiler * diasAlquilados) * descuentoDC);
-
-                    }
-
-                    System.out.println("El valor actual del alquiler con sobrecargo o descuento es de " + valorFacturacionBase + " pesos");
-
-
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("---------------------------------------------------------------");
-                    // Dias extra
-
-                    while (operacion == 2) {
-
-                        while (operacion == 2) {
-
-                            System.out.println(" ");
-                            System.out.println("¿Se realizaron dias extras de alquileres? Si = 1 y No = 2");
+                            System.out.println("---------------------------------------------------------------");
+                            System.out.println("|   Opcion   |                  Descripción                   |");
+                            System.out.println("---------------------------------------------------------------");
+                            System.out.println("|     1      |              realizar facturación              |");
+                            System.out.println("|     2      |                     Salir                      |");
+                            System.out.println("---------------------------------------------------------------");
+                            System.out.println(" ");  
                             System.out.print("Respuesta: ");
-                            pregunta = leerT.nextInt();
-                            System.out.println(" ");
+                            opcionMenu = leerT.nextInt();
 
-                            if (pregunta != 1) {
+                            if (opcionMenu == 1) {
 
-                                System.out.println("No se realizaron dias extras");
-                                diasExtrasAlquilados = 0;
-                                operacion = 1;
+                                //Condiciones de alquielr
+                                System.out.println(" ");
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("|                     Condiciones de Alquiler                  |");
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("| Nombre del cliente      | El nombre del cliente no debe      |");
+                                System.out.println("|                         | contener espacios y se remplazan   |");
+                                System.out.println("|                         | por raya al piso.                  |"); 
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("| Dias de alquiler        | Se debe alquilar min. 2 y max " +maxDiasAlquiler+ "  |");
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("| Opciones de alquiler    | Las opciones son tres y se dividen |");
+                                System.out.println("|                         | en dentro de la ciudad, afuera de  |");
+                                System.out.println("|                         | en dentro de la ciudad y dentro del|");
+                                System.out.println("|                         | local.                             |");
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("| Alquiler equipos        | Existen diferentes tipos de equipos|");
+                                System.out.println("|                         | pc de escritorio, laptop y tablet. |");
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("| Metodo de pago          | El metodo de pago es en efectivo o |");
+                                System.out.println("|                         | tarjeta.                           |");
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("| Descuento               | Descuento en el local   -> " + (descuentoDC*100) + "%    |");
+                                System.out.println("|                         | Descuento por dia extra -> " + (descuentoDA*100) + "%    |");
+                                System.out.println("|                         | Descuento por dia extra -> " + (descuentoDA*100) + "%    |");
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("| Sobre cargo             | Sobre cargo             -> " + (sobreCargoFC*100) + "%    |");
+                                System.out.println("---------------------------------------------------------------");
 
-                            }
+                                // Empezar facturación
+                                System.out.println(" ");
+                                System.out.println("<-- Empezar facturación -->");
+                                System.out.println(" ");
 
-                            else {
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("---------------------------------------------------------------");
+
+                                // Nombre del cliente
+                                System.out.print("Nombre del cliente: ");
+                                nombreCliente = leerT.next(); 
+                                System.out.println(" ");  
+                                
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("---------------------------------------------------------------");
+
+                                while (operacion == 1) {
+
+                                    // Tipo cliente
+                                    System.out.print("Tipo cliente (Juridico o Natural): ");                        
+                                    tipoCliente = leerT.next();
+
+                                    if (tipoCliente.equals("Juridico") || tipoCliente.equals("juridico") || tipoCliente.equals("Natural") || tipoCliente.equals("natural") ) {
+
+                                        operacion = 2;
+                                        System.out.println(" "); 
+
+                                    }
+
+                                    else {
+
+                                        System.out.println(" ");
+                                        System.out.println("Asegurate de haber ingresado el dato correctamente");
+                                        System.out.println(" ");
+
+                                    }
+
+                                }
+
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("---------------------------------------------------------------");
+
+                                while (operacion == 2) {
+
+                                    // Nombre empresa
+                                    System.out.println("¿El cliente tiene o pertenece a una empresa? Si = 1   No = 2");
+                                    System.out.print("Pregunta: ");
+                                    pregunta = leerT.nextInt();
+
+                                    if (pregunta != 1) {
+
+                                        nombreEmpresa = "-----//-----";
+                                        operacion = 1; // cerrar ciclo
+                                        pregunta = 1; // reinicio de variable 
+
+                                    }
+
+                                    else {
+
+                                        System.out.println(" ");
+                                        System.out.print("Ingrese el nombre de la empresa: ");
+                                        nombreEmpresa = leerT.next();
+                                        System.out.println(" ");
+                                        operacion = 1; // cerrar ciclo                 
+
+                                    }
+                                
+                                }
+
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("---------------------------------------------------------------");
+
+                                // Ingresar numero de equipos alquilados
+                                while (operacion == 1) {
+            
+                                    // Numero de equipos alquilados
+                                    System.out.println(" ");
+                                    System.out.println("¿Cuantos equipos alquilo el cliente? (Min: 2 y Max: " + numEquiposEmpresa +")" );
+                                    System.out.print("Num. equipos alquilados: ");
+                                    numAlquilados = leerT.nextInt();
+                                    
+                                    if (numAlquilados < 2 || numAlquilados > numEquiposEmpresa) {
+
+                                        System.out.println(" ");
+                                        System.out.println("No se puede alquilar menos de dos equipos ni mas de " + numEquiposEmpresa );
+                                        System.out.println(" ");
+                                    }
+
+                                    else if (numAlquilados >= 2 && numAlquilados <= numEquiposEmpresa) {
+
+                                        while (operacion == 1) {
+
+                                            System.out.println(" ");
+                                            System.out.println("Si no alquilo ningun equipo agregue 0 de alguna de las categorias agregue cero");
+                                            System.out.println("");
+                                            System.out.println("¿Cuantos equipos de computo tipo pc?");
+                                            System.out.print("Cantidad: ");
+                                            numAlquiladosPc = leerT.nextInt();
+                                            System.out.println("¿Cuantos equipos de computo tipo laptop?");
+                                            System.out.print("Cantidad: ");
+                                            numAlquiladosLaptop = leerT.nextInt();
+                                            System.out.println("¿Cuantos equipos de computo tipo tablet?");
+                                            System.out.print("Cantidad: ");
+                                            numAlquiladosTablet = leerT.nextInt();
+                                            System.out.println(" ");
+
+                                            if (numAlquiladosPc + numAlquiladosLaptop + numAlquiladosTablet != numAlquilados) {
+
+                                                System.out.println(" ");
+                                                System.out.println("El numero de equipos alquilados no coincide con la suma de los equipos alquilados por tipo");
+                                                System.out.println(" ");
+
+                                            }
+
+                                            else if (numAlquiladosPc + numAlquiladosLaptop + numAlquiladosTablet == numAlquilados) {
+
+                                                System.out.println(" ");
+                                                System.out.println("El numero de equipos alquilados es: " + numAlquilados);
+                                                System.out.println("El numero de equipos alquilados tipo pc es: " + numAlquiladosPc);
+                                                System.out.println("El numero de equipos alquilados tipo laptop es: " + numAlquiladosLaptop);
+                                                System.out.println("El numero de equipos alquilados tipo tablet es: " + numAlquiladosTablet);
+                                                operacion = 2;
+                                                System.out.println(" ");
+
+                                            }
+
+                                            else {
+                                                    
+                                                System.out.println("Error");
+
+                                            }
+
+                                        }
+                                        
+                                        operacion = 2;
+                                        System.out.println(" ");
+
+                                    } 
+                                    
+                                    else {
+
+                                        operacion = 2;
+                                        System.out.println(" ");
+
+                                    }
+                                
+                                }
+
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("---------------------------------------------------------------");
+
+                                // Dias alquilados
+
+                                while (operacion == 2) {
+
+                                    System.out.println("Reglas de alquiler");
+                                    System.out.println(" ");
+                                    System.out.println("Minimo numero dias de alquiler -> 2 | Maximo numero de alquiler -> " + maxDiasAlquiler );
+                                    System.out.println(" ");
+                                    System.out.println("Cada alquiler de equipo tiene un precio de " + valorAlquiler + " pesos por dia");
+                                    System.out.println("");
+                                    System.out.println("¿Cuantos dias se alquilo? ");
+                                    System.out.print("Respuesta: ");
+                                    diasAlquilados = leerT.nextInt();
+
+                                    if (diasAlquilados <= 0 || diasAlquilados > maxDiasAlquiler) { // Si dias alquilados es menor o igual a 0 o dialalquilados es mayor a 183
+                                        System.out.println(" ");
+                                        System.out.println("1. El numero de dias alquilados no puede ser menor a 2 o igual a 0");
+                                        System.out.println("2. El numero de dias alquilados no puede ser mayor a " + maxDiasAlquiler + "dias");
+                                        System.out.println(" ");
+                                    }
+
+                                    else if (diasAlquilados >= 2 || diasAlquilados <= maxDiasAlquiler) {
+                                        operacion = 1;
+                                        System.out.println("El alquiler se realizo por " + diasAlquilados + " dias");
+                                        System.out.println("Tendra un valor de " + (diasAlquilados*valorAlquiler) + " pesos");
+                                        System.out.println(" ");
+                                        System.out.println("La fecha del alquiler es " + fechaHoy);
+                                        System.out.println("Y terminara el " + fechaHoy.plusDays(diasAlquilados));
+                                    }
+
+                                }
+
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("---------------------------------------------------------------");
+
+                                // Tipo alquiler
+
+                                while (operacion == 1) {
+
+                                    System.out.println("Ingrese el tipo de alquiler: ");
+                                    System.out.println(" ");
+                                    System.out.println("Dentro de la ciudad (Bogotá D.C) = escriba 1 ");
+                                    System.out.println("Fuera de la ciudad  = 2");
+                                    System.out.println("Alquiler en el local = 3");
+                                    System.out.println(" ");
+                                    System.out.print("Respuesta: ");
+                                    tipoAlquiler = leerT.next(); 
+                                    System.out.println(" ");
+                                    
+                                    if (tipoAlquiler.equals("1")) {
+
+                                        System.out.println("Tipo de alquiler -> Dentro de la ciudad");
+                                        System.out.println("El alquiler se realizo en Bogota D.C");
+                                        tipoAlquiler = "Dentro de la ciudad";
+                                        sitioAlquiler = "Bogota D.C";
+
+                                        //Cerrar ciclo
+                                        operacion = 2;
+
+                                    } 
+
+                                    else if (tipoAlquiler.equals("2")) {
+
+                                        System.out.println("Tipo de alquiler -> Fuera de la ciudad");
+                                        System.out.println("Sobre cargo añadido por alquiler fuera de la ciudad -> " + (sobreCargoFC*100) + "%");
+                                        tipoAlquiler = "Fuera de la ciudad";
+                                        System.out.println("");
+                                        System.out.print("Ingrese el sitio donde se realizo el alquiler: ");
+                                        sitioAlquiler = leerT.next();
+
+                                        //Cerrar ciclo
+                                        operacion = 2;
+                                    }
+
+                                    else if (tipoAlquiler.equals("3")) {
+
+                                        System.out.println("Tipo de alquiler -> Alquiler en el local");
+                                        System.out.println("Descuento añadido por alquiler en el local -> " + (descuentoDC*100) + "%");
+                                        tipoAlquiler = "Alquiler en el local";
+                                        System.out.println("");
+                                        sitioAlquiler = "Local - Cr 115 # 70 - 50";
+
+                                        //Cerrar ciclo
+                                        operacion = 2;
+                                    }
+
+                                    else {
+
+                                        System.out.println("Error");
+
+                                    }
+
+                                }
+
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("---------------------------------------------------------------");
+
+                                // Recordatorio precio actual del alquiler por dia y descuento o sobrecargo
 
                                 System.out.println(" ");
-                                System.out.print("Dias extras alquilados: ");
-                                diasExtrasAlquilados = leerT.nextInt();
+                                System.out.println("El valor actual del alquiler es de " + valorAlquiler + " pesos");
+
+                                if (tipoAlquiler.equals("Dentro de la ciudad")) {
+
+                                    System.out.println("El descuento por alquiler en el local es de " + (descuentoDC*100) + "%");
+                                    valorFacturacionBase = valorAlquiler * diasAlquilados;
+
+                                }
+
+                                else if (tipoAlquiler.equals("Fuera de la ciudad")) {
+
+                                    System.out.println("El sobrecargo por alquiler fuera de la ciudad es de " + (sobreCargoFC*100) + "%");
+                                    valorFacturacionBase = (valorAlquiler * diasAlquilados) + ((valorAlquiler * diasAlquilados) * sobreCargoFC);
+
+                                }
+
+                                else if (tipoAlquiler.equals("Alquiler en el local")) {
+
+                                    System.out.println("El descuento por alquiler en el local es de " + (descuentoDC*100) + "%");
+                                    valorFacturacionBase = (valorAlquiler * diasAlquilados) - ((valorAlquiler * diasAlquilados) * descuentoDC);
+
+                                }
+
+                                System.out.println("El valor actual del alquiler con sobrecargo o descuento es de " + valorFacturacionBase + " pesos");
+
+
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("---------------------------------------------------------------");
+                                // Dias extra
+
+                                while (operacion == 2) {
+
+                                    while (operacion == 2) {
+
+                                        System.out.println(" ");
+                                        System.out.println("¿Se realizaron dias extras de alquileres? Si = 1 y No = 2");
+                                        System.out.print("Respuesta: ");
+                                        pregunta = leerT.nextInt();
+                                        System.out.println(" ");
+
+                                        if (pregunta != 1) {
+
+                                            System.out.println("No se realizaron dias extras");
+                                            diasExtrasAlquilados = 0;
+                                            operacion = 1;
+
+                                        }
+
+                                        else {
+
+                                            System.out.println(" ");
+                                            System.out.print("Dias extras alquilados: ");
+                                            diasExtrasAlquilados = leerT.nextInt();
+                                            System.out.println(" ");
+                                            
+                                            if (diasExtrasAlquilados == 0) {
+
+                                                operacion = 1;
+
+                                            }
+
+                                            else if (diasAlquilados < 0) {
+
+                                                System.out.println("No se puede ingresar un valor menor a 0");
+
+                                            }
+
+                                            else if (diasExtrasAlquilados > (maxDiasAlquiler - diasAlquilados)) {
+
+                                                System.out.println("No puede ser mayor a " + (maxDiasAlquiler-diasAlquilados));
+
+                                            }
+
+                                            else if (diasAlquilados <= (maxDiasAlquiler - diasAlquilados)) {
+
+                                                System.out.println("El numero extras de alquiler es: " + diasExtrasAlquilados);
+                                                operacion = 1;
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                }
+
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("---------------------------------------------------------------");
+
+                                // Recordatorio Precio valor a pagar por los dias extras
+
+                                System.out.println(" ");
+                                System.out.println("El valor actual del alquiler es de " + valorFacturacionBase + " pesos");
                                 System.out.println(" ");
                                 
+                                // Condicional - Dias extras
+
                                 if (diasExtrasAlquilados == 0) {
 
-                                    operacion = 1;
+                                    valorFacturacionDiasExtras = 0;
 
                                 }
 
-                                else if (diasAlquilados < 0) {
+                                else if (diasExtrasAlquilados >= 10) {
 
-                                    System.out.println("No se puede ingresar un valor menor a 0");
-
-                                }
-
-                                else if (diasExtrasAlquilados > (maxDiasAlquiler - diasAlquilados)) {
-
-                                    System.out.println("No puede ser mayor a " + (maxDiasAlquiler-diasAlquilados));
+                                    valorFacturacionDiasExtras = (valorAlquiler * diasExtrasAlquilados) - ((valorAlquiler * diasExtrasAlquilados) * maxDescuentoAlquilerDiasExtra);
+                                    System.out.println("El valor actual del alquiler por dias extras es de " + valorFacturacionDiasExtras + " pesos");
 
                                 }
 
-                                else if (diasAlquilados <= (maxDiasAlquiler - diasAlquilados)) {
+                                else if (diasExtrasAlquilados < 10) {
 
-                                    System.out.println("El numero extras de alquiler es: " + diasExtrasAlquilados);
-                                    operacion = 1;
+                                    valorFacturacionDiasExtras = (valorAlquiler * diasExtrasAlquilados) - ((valorAlquiler * diasExtrasAlquilados) * descuentoDA);
+                                    System.out.println("El valor actual del alquiler por dias extras es de " + valorFacturacionDiasExtras + " pesos");
 
                                 }
+
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("---------------------------------------------------------------");
+
+                                // Correo
+
+                                while (operacion == 1) {
+
+                                    System.out.println(" ");
+                                    System.out.println("Ingrese el correo del cliente (debe finalizar con @gmail.com no se permite otro dominio): ");
+                                    System.out.print("Correo: ");
+                                    mailCliente = leerT.next();
+                                    System.out.println(" ");
+                                    
+                                    // validar que unicamente no es @gmail.com
+                                    if (mailCliente.equals("@gmail.com")) {
+                                        
+                                        System.out.println("No se puede ingresar unicamente @gmail.com, no es una opción correcta");
+
+                                    }
+
+                                    else if (mailCliente.endsWith("@gmail.com")) {
+
+                                        System.out.println("El correo cumple con las reglas");
+                                        operacion = 2; // cerrar ciclo
+
+                                    } else {
+
+                                        System.out.println("El correo ingresado no cumple con las reglas");
+
+                                    } 
+                                    
+                                }
+
+                                while (operacion == 2) {
+                                    
+                                    System.out.println("");
+                                    System.out.println("Metodos de pago");
+                                    System.out.println(" ");
+                                    System.out.println("----------------");
+                                    System.out.println("| 1. Efectivo |");
+                                    System.out.println("| 2. Tarjeta  |");
+                                    System.out.println("----------------");
+                                    System.out.println(" ");
+                                    System.out.println("Ingrese el metodo de pago (numero): ");
+                                    metodoPago = leerT.next();
+                                    
+                                    if (metodoPago.equals("1")) {
+
+                                        System.out.println("El metodo de pago es en efectivo");
+                                        operacion = 1;
+
+                                    }
+
+                                    else if (metodoPago.equals("2")) {
+
+                                        System.out.println("El metodo de pago es en tarjeta");
+                                        operacion = 1;
+
+                                    }
+
+                                    else {
+
+                                        System.out.println("Error");
+
+                                    }
+
+                                }
+
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("---------------------------------------------------------------");
+
+                                // Facturación
+
+                                System.out.println(" ");
+                                System.out.println("///////////////////////////////////////// ");
+                                System.out.println("|      Fecha de facturación: " + fechaHoy);
+                                System.out.println("|      Factura de alquiler No. " + idFactura);
+                                System.out.println("|      Nombre del cliente: " + nombreCliente);
+                                System.out.println("|      Id del cliente: " + idCliente);
+                                System.out.println("|      Tipo de cliente: " + tipoCliente);
+                                System.out.println("|      Nombre de la empresa: " + nombreEmpresa);
+                                System.out.println("|--------------------------------------");
+                                System.out.println("|      Detalles del alquiler:");
+                                System.out.println("|      - Finalización alquiler: " + fechaHoy.plusDays(diasAlquilados + diasExtrasAlquilados));                    
+                                System.out.println("|      - Numero de equipos alquilados: " + numAlquilados);
+                                System.out.println("|           - Equipos de mesa: " + numAlquiladosPc);                    
+                                System.out.println("|           - Equipos de laptop: " + numAlquiladosLaptop);                    
+                                System.out.println("|           - Equipos de tablet: " + numAlquiladosTablet);                                        
+                                System.out.println("|      - Dias de alquiler: " + diasAlquilados);
+                                System.out.println("|      - Tipo de alquiler: " + tipoAlquiler);
+                                System.out.println("|      - Sitio de alquiler: " + sitioAlquiler);
+                                System.out.println("|      - Dias extras de alquiler: " + diasExtrasAlquilados);
+                                System.out.println("|--------------------------------------");
+                                System.out.println("|      Detalles de facturación:");
+                                System.out.println("|      - Valor de alquiler por día: " + valorAlquiler);
+                                System.out.println("|      - Valor de alquiler por días extras: " + valorFacturacionDiasExtras);
+                                System.out.println("|      - Valor de alquiler total: " + (valorFacturacionBase + valorFacturacionDiasExtras));
+                                System.out.println("       - Metodo de pago " + metodoPago);
+                                System.out.println("|--------------------------------------");
+                                System.out.println("|      Información de contacto:");
+                                System.out.println("|      - Correo del cliente: " + mailCliente);
+                                System.out.println("///////////////////////////////////////// ");
+                                System.out.println(" ");
+                                
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("---------------------------------------------------------------");
+
+                                // Enviar correo
+
+                                final String username = "pruebacorreopruebacorreo459@gmail.com";
+                                final String password = "zhgw kxpp gttg dhfp";
+
+                                Properties props = new Properties();
+                                props.put("mail.smtp.auth", "true");
+                                props.put("mail.smtp.starttls.enable","true");
+                                props.put("mail.smtp.host", "smtp.gmail.com");
+                                props.put("mail.smtp.port", "587");
+
+                                Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+                                    protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+                                        return new javax.mail.PasswordAuthentication(username, password);
+                                    }
+                                });
+
+
+                                try {
+                                    // Crear un mensaje de correo
+                                    Message message = new MimeMessage(session);
+                                    message.setFrom(new InternetAddress("pruebacorreopruebacorreo459@gmail.com"));
+                                    message.setRecipients(Message.RecipientType.TO,
+                                            InternetAddress.parse(mailCliente));
+                                    message.setSubject("Facturación id: " + idFactura + " para el cliente: " + nombreCliente);
+                                    String messageContent = "///////////////////////////////////////// \n" +
+                                                "|      Fecha de facturación: " + fechaHoy + "\n" +
+                                                "|      Factura de alquiler No. " + idFactura + "\n" +
+                                                "|      Nombre del cliente: " + nombreCliente + "\n" +
+                                                "|      Id del cliente: " + idCliente + "\n" +
+                                                "|      Tipo de cliente: " + tipoCliente + "\n" +
+                                                "|      Nombre de la empresa: " + nombreEmpresa + "\n" +
+                                                "|--------------------------------------\n" +
+                                                "|      Detalles del alquiler:\n" +
+                                                "|      - Finalización alquiler: " + fechaHoy.plusDays(diasAlquilados + diasExtrasAlquilados) + "\n" +                                    
+                                                "|      - Numero de equipos alquilados: " + numAlquilados + "\n" +
+                                                "|           - Equipos de mesa: " + numAlquiladosPc + "\n" +
+                                                "|           - Equipos de laptop: " + numAlquiladosLaptop + "\n" +
+                                                "|           - Equipos de tablet: " + numAlquiladosTablet + "\n" +
+                                                "|      - Dias de alquiler: " + diasAlquilados + "\n" +
+                                                "|      - Tipo de alquiler: " + tipoAlquiler + "\n" +
+                                                "|      - Sitio de alquiler: " + sitioAlquiler + "\n" +
+                                                "|      - Dias extras de alquiler: " + diasExtrasAlquilados + "\n" +
+                                                "|--------------------------------------\n" +
+                                                "|      Detalles de facturación:\n" +
+                                                "|      - Valor de alquiler por día: " + valorAlquiler + "\n" +
+                                                "|      - Valor de alquiler por días extras: " + valorFacturacionDiasExtras + "\n" +
+                                                "|      - Valor de alquiler total: " + (valorFacturacionBase + valorFacturacionDiasExtras) + "\n" +
+                                                "       - Metodo de pago " + metodoPago + "\n" +
+                                                "|--------------------------------------\n" +
+                                                "|      Información de contacto:\n" +
+                                                "|      - Correo del cliente: " + mailCliente + "\n" +
+                                                "///////////////////////////////////////// ";
+
+                                    message.setText(messageContent);
+                                    // Enviar el correo
+                                    Transport.send(message);
+                                    System.out.println("Correo enviado exitosamente. Revise su correo (realmente funciona el envio de correo)");
+
+                                } catch (MessagingException e) {
+                                    throw new RuntimeException(e);
+                                }
+
+                                // Salir o Seguir en la sesión
+
+                                System.out.println(" ");
+
+                                // Salir o Seguir en la sesión
+
+                                System.out.println(" ");
+                                System.out.println("¿Quiere realizar otra facturación? Si = 1   No = 2");
+                                System.out.print("Respuesta: ");
+                                inicioSesion = leerT.nextInt();
+                                System.out.println("");
+                                System.out.println("¿Seguro? Si = 1  No = 2");
+                                System.out.print("Respuesta: ");
+                                System.out.println(" ");
+                                inicioSesion = leerT.nextInt();
+
+                            } else if ( opcionMenu == 2) {
+
+                                System.out.println(" ");
+                                System.out.println("Sesión cerrada");
+                                System.out.println(" ");
+                                inicioSesion = 2;
+
+                            } else {
+
+                                System.out.println(" ");
+                                System.out.println("Error");
+                                System.out.println(" ");
 
                             }
-
-                        }
-
-                    }
-
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("---------------------------------------------------------------");
-
-                    // Recordatorio Precio valor a pagar por los dias extras
-
-                    System.out.println(" ");
-                    System.out.println("El valor actual del alquiler es de " + valorFacturacionBase + " pesos");
-                    System.out.println(" ");
-                    
-                    // Condicional - Dias extras
-
-                    if (diasExtrasAlquilados == 0) {
-
-                        valorFacturacionDiasExtras = 0;
+    
+                        }        
 
                     }
-
-                    else if (diasExtrasAlquilados >= 10) {
-
-                        valorFacturacionDiasExtras = (valorAlquiler * diasExtrasAlquilados) - ((valorAlquiler * diasExtrasAlquilados) * maxDescuentoAlquilerDiasExtra);
-                        System.out.println("El valor actual del alquiler por dias extras es de " + valorFacturacionDiasExtras + " pesos");
-
-                    }
-
-                    else if (diasExtrasAlquilados < 10) {
-
-                        valorFacturacionDiasExtras = (valorAlquiler * diasExtrasAlquilados) - ((valorAlquiler * diasExtrasAlquilados) * descuentoDA);
-                        System.out.println("El valor actual del alquiler por dias extras es de " + valorFacturacionDiasExtras + " pesos");
-
-                    }
-
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("---------------------------------------------------------------");
-
-                    // Correo
-
-                    while (operacion == 1) {
-
-                        System.out.println(" ");
-                        System.out.println("Ingrese el correo del cliente (debe finalizar con @gmail.com no se permite otro dominio): ");
-                        System.out.print("Correo: ");
-                        mailCliente = leerT.next();
-                        System.out.println(" ");
-                        
-                        // validar que unicamente no es @gmail.com
-                        if (mailCliente.equals("@gmail.com")) {
-                            
-                            System.out.println("No se puede ingresar unicamente @gmail.com, no es una opción correcta");
-
-                        }
-
-                        else if (mailCliente.endsWith("@gmail.com")) {
-
-                            System.out.println("El correo cumple con las reglas");
-                            operacion = 2; // cerrar ciclo
-
-                        } else {
-
-                            System.out.println("El correo ingresado no cumple con las reglas");
-
-                        } 
-                        
-                    }
-
-                    while (operacion == 2) {
-                        
-                        System.out.println("");
-                        System.out.println("Metodos de pago");
-                        System.out.println(" ");
-                        System.out.println("----------------");
-                        System.out.println("| 1. Efectivo |");
-                        System.out.println("| 2. Tarjeta  |");
-                        System.out.println("----------------");
-                        System.out.println(" ");
-                        System.out.println("Ingrese el metodo de pago (numero): ");
-                        metodoPago = leerT.next();
-                        
-                        if (metodoPago.equals("1")) {
-
-                            System.out.println("El metodo de pago es en efectivo");
-                            operacion = 1;
-
-                        }
-
-                        else if (metodoPago.equals("2")) {
-
-                            System.out.println("El metodo de pago es en tarjeta");
-                            operacion = 1;
-
-                        }
-
-                        else {
-
-                            System.out.println("Error");
-
-                        }
-
-                    }
-
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("---------------------------------------------------------------");
-
-                    // Facturación
-
-                    System.out.println(" ");
-                    System.out.println("///////////////////////////////////////// ");
-                    System.out.println("|      Fecha de facturación: " + fechaHoy);
-                    System.out.println("|      Factura de alquiler No. " + idFactura);
-                    System.out.println("|      Nombre del cliente: " + nombreCliente);
-                    System.out.println("|      Id del cliente: " + idCliente);
-                    System.out.println("|      Tipo de cliente: " + tipoCliente);
-                    System.out.println("|      Nombre de la empresa: " + nombreEmpresa);
-                    System.out.println("|--------------------------------------");
-                    System.out.println("|      Detalles del alquiler:");
-                    System.out.println("|      - Finalización alquiler: " + fechaHoy.plusDays(diasAlquilados + diasExtrasAlquilados));                    
-                    System.out.println("|      - Numero de equipos alquilados: " + numAlquilados);
-                    System.out.println("|           - Equipos de mesa: " + numAlquiladosPc);                    
-                    System.out.println("|           - Equipos de laptop: " + numAlquiladosLaptop);                    
-                    System.out.println("|           - Equipos de tablet: " + numAlquiladosTablet);                                        
-                    System.out.println("|      - Dias de alquiler: " + diasAlquilados);
-                    System.out.println("|      - Tipo de alquiler: " + tipoAlquiler);
-                    System.out.println("|      - Sitio de alquiler: " + sitioAlquiler);
-                    System.out.println("|      - Dias extras de alquiler: " + diasExtrasAlquilados);
-                    System.out.println("|--------------------------------------");
-                    System.out.println("|      Detalles de facturación:");
-                    System.out.println("|      - Valor de alquiler por día: " + valorAlquiler);
-                    System.out.println("|      - Valor de alquiler por días extras: " + valorFacturacionDiasExtras);
-                    System.out.println("|      - Valor de alquiler total: " + (valorFacturacionBase + valorFacturacionDiasExtras));
-                    System.out.println("       - Metodo de pago " + metodoPago);
-                    System.out.println("|--------------------------------------");
-                    System.out.println("|      Información de contacto:");
-                    System.out.println("|      - Correo del cliente: " + mailCliente);
-                    System.out.println("///////////////////////////////////////// ");
-                    System.out.println(" ");
-                    
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("---------------------------------------------------------------");
-
-                    // Enviar correo
-
-                    final String username = "pruebacorreopruebacorreo459@gmail.com";
-                    final String password = "";
-
-                    Properties props = new Properties();
-                    props.put("mail.smtp.auth", "true");
-                    props.put("mail.smtp.starttls.enable","true");
-                    props.put("mail.smtp.host", "smtp.gmail.com");
-                    props.put("mail.smtp.port", "587");
-
-                    Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-                        protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
-                            return new javax.mail.PasswordAuthentication(username, password);
-                        }
-                    });
-
-
-                    try {
-                        // Crear un mensaje de correo
-                        Message message = new MimeMessage(session);
-                        message.setFrom(new InternetAddress("pruebacorreopruebacorreo459@gmail.com"));
-                        message.setRecipients(Message.RecipientType.TO,
-                                InternetAddress.parse(mailCliente));
-                        message.setSubject("Facturación id: " + idFactura + " para el cliente: " + nombreCliente);
-                        String messageContent = "///////////////////////////////////////// \n" +
-                                    "|      Fecha de facturación: " + fechaHoy + "\n" +
-                                    "|      Factura de alquiler No. " + idFactura + "\n" +
-                                    "|      Nombre del cliente: " + nombreCliente + "\n" +
-                                    "|      Id del cliente: " + idCliente + "\n" +
-                                    "|      Tipo de cliente: " + tipoCliente + "\n" +
-                                    "|      Nombre de la empresa: " + nombreEmpresa + "\n" +
-                                    "|--------------------------------------\n" +
-                                    "|      Detalles del alquiler:\n" +
-                                    "|      - Finalización alquiler: " + fechaHoy.plusDays(diasAlquilados + diasExtrasAlquilados) + "\n" +                                    
-                                    "|      - Numero de equipos alquilados: " + numAlquilados + "\n" +
-                                    "|           - Equipos de mesa: " + numAlquiladosPc + "\n" +
-                                    "|           - Equipos de laptop: " + numAlquiladosLaptop + "\n" +
-                                    "|           - Equipos de tablet: " + numAlquiladosTablet + "\n" +
-                                    "|      - Dias de alquiler: " + diasAlquilados + "\n" +
-                                    "|      - Tipo de alquiler: " + tipoAlquiler + "\n" +
-                                    "|      - Sitio de alquiler: " + sitioAlquiler + "\n" +
-                                    "|      - Dias extras de alquiler: " + diasExtrasAlquilados + "\n" +
-                                    "|--------------------------------------\n" +
-                                    "|      Detalles de facturación:\n" +
-                                    "|      - Valor de alquiler por día: " + valorAlquiler + "\n" +
-                                    "|      - Valor de alquiler por días extras: " + valorFacturacionDiasExtras + "\n" +
-                                    "|      - Valor de alquiler total: " + (valorFacturacionBase + valorFacturacionDiasExtras) + "\n" +
-                                    "       - Metodo de pago " + metodoPago + "\n" +
-                                    "|--------------------------------------\n" +
-                                    "|      Información de contacto:\n" +
-                                    "|      - Correo del cliente: " + mailCliente + "\n" +
-                                    "///////////////////////////////////////// ";
-
-                        message.setText(messageContent);
-                        // Enviar el correo
-                        Transport.send(message);
-                        System.out.println("Correo enviado exitosamente. Revise su correo (realmente funciona el envio de correo)");
-
-                    } catch (MessagingException e) {
-                        throw new RuntimeException(e);
-                    }
-
-                    // Salir o Seguir en la sesión
-
-                    System.out.println(" ");
-
-                    // Salir o Seguir en la sesión
-
-                    System.out.println(" ");
-                    System.out.println("¿Quiere realizar otra facturación? Si = 1   No = 2");
-                    System.out.print("Respuesta: ");
-                    inicioSesion = leerT.nextInt();
-                    System.out.println("");
-                    System.out.println("¿Seguro? Si = 1  No = 2");
-                    System.out.print("Respuesta: ");
-                    System.out.println(" ");
-                    inicioSesion = leerT.nextInt();
-
-                } 
-
-                else if (opcionMenu == 2) { 
-                    
-                    System.out.println(" ");
-                    inicioSesion = 2;
 
                 }
 
-                else { 
-                    
+                else if (ubicacionCredencialesArrayPass != ubicacionCredencialesArrayUsuarios) {
+
                     System.out.println(" ");
-                    System.out.println("Ingresaste un valor no definido");
+                    System.out.println("Credenciales incorrectas");
                     System.out.println(" ");
 
                 }
 
+                else {
 
+                    System.out.println(" ");
+                    System.out.println("Error");
+                    System.out.println(" ");
 
-                
                 }
 
             }
-
-            // Si las credenciales son incorrectas a las esperadas
-            else if (!user.equals("empleado123") && !pass.equals("pass123")) {
-
-                System.out.println(" ");
-                System.out.println("Ingresaste las credenciales incorrectas");
-                System.out.println(" ");
-
-            }
-
-            // SI SURGE UN ERROR O ALGO QUE NO ESTA EN ALGUN LADO
-            else { 
-
-                System.out.println(" ");
-                System.out.println("Error");
-                System.out.println(" ");
-
-            }
-
+            
         }
-
-        
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Cerrar clases
