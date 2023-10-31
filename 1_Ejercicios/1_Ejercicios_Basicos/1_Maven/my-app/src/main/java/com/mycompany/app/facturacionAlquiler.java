@@ -682,7 +682,7 @@ public class facturacionAlquiler {
                     // Enviar correo
 
                     final String username = "pruebacorreopruebacorreo459@gmail.com";
-                    final String password = "zhgw kxpp gttg dhfp";
+                    final String password = "";
 
                     Properties props = new Properties();
                     props.put("mail.smtp.auth", "true");
