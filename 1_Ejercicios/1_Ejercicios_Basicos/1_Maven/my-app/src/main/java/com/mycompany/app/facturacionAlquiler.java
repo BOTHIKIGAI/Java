@@ -134,6 +134,12 @@ public class facturacionAlquiler {
         int maxDiasAlquiler = 183; // almacenara el numero de equipos maximso que se puede alquilar
         float maxDescuentoAlquilerDiasExtra = 0.2f; // almacenar el valor maximo que puede tener el alquiler por dia extra
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // VARIABLE INTERMEDIA CAMBIOS VALORES  
+
+        int numEquiposEmpresaModificacion = numEquiposEmpresa; // almacenar el numero de equipos que tiene la empresa como variable intermedia
+        int maxDiasAlquilerModificacion = maxDiasAlquiler; // almacenara el numero de equipos maximso que se puede alquilar como variable intermediaria
+        float maxDescuentoAlquilerDiasExtraModificacion = maxDescuentoAlquilerDiasExtra; // almacenar el valor maximo que puede tener el alquiler por dia extra como variable intermediaria
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // VARIABLES DE CONTROL
@@ -142,6 +148,7 @@ public class facturacionAlquiler {
         int inicioSesion = 1; // variable para el ciclo while de realizar nuevamente consultas
         int opcionMenu = 0; // almacenar las respuestas de las opciones de menu
         int operacion = 1; // variable para el ciclo while de realizar operaciones hasta que se cumpla la regla de negocio
+        int operacionII = 1; // variable para el ciclo while de realizar operaciones hasta que se cumpla la regla de negocio
         int pregunta = 1; // variable para el condicionales de preguntas 
 
 
@@ -170,6 +177,7 @@ public class facturacionAlquiler {
             // Reinicio de variables
             inicioSesion = 1; // Para que el ciclo vuelva a iniciar
             operacion = 1; // Operaciones para cumplir regla de negocio
+            operacionII = 1;
             ubicacionCredencialesArrayUsuarios = 11; // Realizar nuevamente comprobaciones
             ubicacionCredencialesArrayPass = 11; // Realizar nuevamente comprobaciones
 
@@ -925,7 +933,99 @@ public class facturacionAlquiler {
 
                         if (opcionMenu == 1) {
 
-                            System.out.println("Cambiar datos facturación");
+                            System.out.println(" ");
+                            System.out.println("///////////////////////////////");
+                            System.out.println("  Cambiar datos facturación");
+                            System.out.println("///////////////////////////////");
+                            System.out.println(" ");
+
+                            System.out.println(" ");
+
+                            while (operacion == 1) {
+
+                                // Reinicio de variable
+                                operacion = 1;
+                                operacionII = 1;
+                                
+                                // Inicio menu
+
+                                System.out.println(" ");
+                                System.out.println("¿Qué cambio desea realizar?");
+                                System.out.println(" ");
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("|   Opcion   |                  Descripción                   |");
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("|     1      |            Cambiar valor alquiler              |");
+                                System.out.println("|     2      |            Cambiar max dias alquiler           |");
+                                System.out.println("|     3      |            Cambiar max descuento alquiler      |");
+                                System.out.println("|     4      |            Numero de equipos de la empresa     |");
+                                System.out.println("|     5      |                     Salir                      |");
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println(" ");
+                                System.out.println("Respuesta: ");
+                                opcionMenu = leerT.nextInt();
+
+                                // INICIO CONDICIONALES - CAMBIOS
+
+                                if (opcionMenu == 1) {
+
+                                    System.out.println(" ");
+                                    System.out.println("///////////////////////////////");
+                                    System.out.println("Cambiar valor alquiler");
+                                    System.out.println("///////////////////////////////");
+                                    System.out.println(" ");
+
+                                    System.out.println("Valor actual del alquiler: " + valorAlquiler);
+                                    System.out.println(" ");
+                                    
+                                    while (operacionII == 1) {
+                                        
+                                    }
+
+                                }
+
+                                else if (opcionMenu == 2) { 
+
+                                    System.out.println(" ");
+                                    System.out.println("///////////////////////////////");
+                                    System.out.println("Cambiar max dias alquiler");
+                                    System.out.println("///////////////////////////////");
+                                    System.out.println(" ");
+
+                                    System.out.println("Valor actual del maximo dias de alquiler: " + numEquiposEmpresa);
+
+                                }
+
+                                else if (opcionMenu == 3) { 
+
+
+
+                                }
+
+                                else if (opcionMenu == 4) { 
+
+
+
+                                } 
+                                
+                                else if (opcionMenu == 5) { 
+
+
+
+                                } 
+
+                                else {
+
+                                    System.out.println(" ");
+                                    System.out.println("Ingresaste un valor diferente a los indicados en el menu");
+                                    System.out.println(" ");
+
+                                }
+
+                            }
+
+                            System.out.println(" ");
+
 
                         }  
 
