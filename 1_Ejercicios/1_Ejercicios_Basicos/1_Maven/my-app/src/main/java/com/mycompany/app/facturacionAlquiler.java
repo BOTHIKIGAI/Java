@@ -139,9 +139,9 @@ public class facturacionAlquiler {
         // Se crea una variable intermedia para realizar el cambio de la variable, esta variable se examinara para saber si cumple o no 
         // con la regla de negocio
 
-        int numEquiposEmpresaCambio = numEquiposEmpresa; // almacenar el numero de equipos que tiene la empresa
-        int maxDiasAlquilerCambio = maxDiasAlquiler; // almacenara el numero de equipos maximso que se puede alquilar
-        float maxDescuentoAlquilerDiasExtraCambio = maxDescuentoAlquilerDiasExtra; // almacenar el valor maximo que puede tener el alquiler por dia extra        
+        int numEquiposEmpresaCambio = 0; // almacenar el numero de equipos que tiene la empresa
+        int maxDiasAlquilerCambio = 0; // almacenara el numero de equipos maximso que se puede alquilar
+        float maxDescuentoAlquilerDiasExtraCambio = 0; // almacenar el valor maximo que puede tener el alquiler por dia extra        
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // VARIABLES DE CONTROL
@@ -150,7 +150,8 @@ public class facturacionAlquiler {
         int inicioSesion = 1; // variable para el ciclo while de realizar nuevamente consultas
         int opcionMenu = 0; // almacenar las respuestas de las opciones de menu
         int operacion = 1; // variable para el ciclo while de realizar operaciones hasta que se cumpla la regla de negocio
-        int pregunta = 1; // variable para el condicionales de preguntas 
+        int pregunta = 1; // variable para el condicionales de preguntas
+        int contador = 0; // variable para saber la cantidad elementos que tiene un array, se usa para la función de agregar nuevos usuarios
 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -561,10 +562,12 @@ public class facturacionAlquiler {
 
                             System.out.println("El valor actual del alquiler con sobrecargo o descuento es de " + valorFacturacionBase + " pesos");
 
+                            System.out.println(" ");
+                            System.out.println("---------------------------------------------------------------");
+                            System.out.println("---------------------------------------------------------------");
+                            System.out.println(" ");
 
-                            System.out.println("---------------------------------------------------------------");
-                            System.out.println("---------------------------------------------------------------");
-                            // Dias extra
+                            // DIAS EXTRA
 
                             while (operacion == 2) {
 
@@ -902,22 +905,23 @@ public class facturacionAlquiler {
 
                 if (ubicacionCredencialesArrayUsuarios == ubicacionCredencialesArrayPass && ubicacionCredencialesArrayUsuarios != 11 && ubicacionCredencialesArrayPass != 11) {
 
+                    System.out.println(" ");
+                    System.out.println("///////////////////////////////////////// ");
+                    System.out.println("   Inico de sesión como administrador    ");
+                    System.out.println("///////////////////////////////////////// ");
+                    System.out.println(" ");
+                        
+                    System.out.println(" ");
+                    System.out.println("Bienvenido " + user);
+                    System.out.println(" ");
+
                     // MENSAJE BIENVENIDA
 
                     while (inicioSesion == 1) {
 
                         // REINICIO DE VARIABLES
                         operacion = 1;
-
-                        System.out.println(" ");
-                        System.out.println("///////////////////////////////////////// ");
-                        System.out.println("      Inicio sesión como administrador    ");
-                        System.out.println("///////////////////////////////////////// ");
-                        System.out.println(" ");
-                        
-                        System.out.println(" ");
-                        System.out.println("Bienvenido " + user);
-                        System.out.println(" ");
+                        contador = 0;
 
                         // Menu de opciones
                         
@@ -929,11 +933,13 @@ public class facturacionAlquiler {
                         System.out.println("---------------------------------------------------------------");
                         System.out.println("|     1      |            cambiar datos necesarios            |");
                         System.out.println("|     2      |               agregar usuario                  |");
-                        System.out.println("|     3      |                     Salir                      |");
+                        System.out.println("|     3      |               listar usuarios                  |");
+                        System.out.println("|     4      |                     Salir                      |");
                         System.out.println("---------------------------------------------------------------");
                         System.out.println(" ");  
                         System.out.print("Respuesta: ");
                         opcionMenu = leerT.nextInt();
+                        System.out.println(" ");
 
                         // CAMBIAR DATOS NECESARIOS
 
@@ -946,18 +952,264 @@ public class facturacionAlquiler {
                             System.out.println("---------------------------------------------------------------");
                             System.out.println("|   Opcion   |                  Descripción                   |");
                             System.out.println("---------------------------------------------------------------");
-                            System.out.println("|     1      |            cambiar datos necesarios            |");
+                            System.out.println("|     1      |            cambiar datos del negocio           |");
                             System.out.println("|     2      |                     Cancelar                   |");
                             System.out.println("---------------------------------------------------------------");
                             System.out.println(" ");
                             System.out.print("Respuesta: ");
                             opcionMenu = leerT.nextInt();
+                            System.out.println(" ");
 
                             while (operacion == 1) {
 
                                 if (opcionMenu == 1) {
+                                
+                                    // MENSAJE DE OPERACIÓN
+                                    System.out.println("//////////////////////////////////////");
+                                    System.out.println("    ¿QUE CAMBIOS DESEA REALIZAR?"      );
+                                    System.out.println("//////////////////////////////////////");
+                                    System.out.println(" ");
 
-                                    System.out.println("Cambiar datos necesarios");
+                                    System.out.println("---------------------------------------------------------------");
+                                    System.out.println("|   Opcion   |                  Descripción                   |");
+                                    System.out.println("---------------------------------------------------------------");
+                                    System.out.println("|     1      |            Numero de equipo de la empresa      |");
+                                    System.out.println("|     2      |            Maximo dias de alquiler             |");
+                                    System.out.println("|     3      |            Maximo descuento por dia extra      |");
+                                    System.out.println("|     4      |            Cancelar                            |");
+                                    System.out.println("---------------------------------------------------------------");
+                                    System.out.println(" ");
+                                    System.out.print("Respuesta: ");
+                                    opcionMenu = leerT.nextInt();
+                                    System.out.println(" ");
+
+                                    if (opcionMenu == 1) {
+
+                                        System.out.println("////////////////////////////////////");
+                                        System.out.println("  Numeros de  equipos de la empresa ");
+                                        System.out.println("////////////////////////////////////");
+                                        System.out.println(" ");
+                                        System.out.println("El valor actual es de " + numEquiposEmpresa + " equipos");
+                                        System.out.println(" ");
+
+                                        while (operacion == 1) {
+                                            
+                                            System.out.println("Ingrese el nuevo valor: ");
+                                            numEquiposEmpresaCambio = leerT.nextInt();
+                                            System.out.println(" ");
+
+                                            if (numEquiposEmpresaCambio <= 0) {
+
+                                                System.out.println("No puede ingresar un valor menor o igual a 0");
+
+                                            }
+
+                                            else if (numEquiposEmpresaCambio > 0) {
+
+                                                System.out.println("¿Confirmar cambios? Si = 1  No = 2");
+
+                                                if (opcionMenu == 1) {
+
+                                                    numEquiposEmpresa = numEquiposEmpresaCambio;
+                                                    System.out.println("Se cambio el valor correctamente");
+                                                    System.out.println(" ");
+                                                    operacion = 2;
+
+                                                }
+
+                                                else if (opcionMenu == 2) {
+
+                                                    System.out.println("Se cancelo la operación");
+                                                    System.out.println(" ");
+
+                                                }
+
+                                                else if (opcionMenu != 1 || opcionMenu != 2) {
+
+                                                    System.out.println("Ingresaste un valor no establecido");
+                                                    System.out.println(" ");
+
+                                                }
+
+                                                else {
+
+                                                    System.out.println("ERROR - CONTACTESE CON SOFTWARE J");
+                                                    System.out.println("");
+
+                                                }
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                    else if (opcionMenu == 2) {
+
+                                        System.out.println("/////////////////////////////////////////////");
+                                        System.out.println("     Cambiar maximo de dias de alquiler      ");
+                                        System.out.println("/////////////////////////////////////////////");
+                                        System.out.println("El valor actual es de " + maxDiasAlquiler + " dias");
+                                        System.out.println(" ");
+
+                                        while (operacion == 1) {
+
+                                            System.out.println("Ingrese el nuevo valor: ");
+                                            maxDiasAlquilerCambio = leerT.nextInt();
+                                            System.out.println(" ");
+
+                                            if (maxDiasAlquilerCambio <= 0) {
+
+                                                System.out.println("No puede ingresar un valor menor o igual a 0");
+
+                                            }
+
+                                            else if (maxDiasAlquilerCambio > 365) {
+
+                                                System.out.println("No puede ingresar un valor mayor a 365 dias");
+
+                                            }
+
+                                            else if (maxDiasAlquilerCambio > 0 && maxDiasAlquilerCambio < 365) {
+
+                                                System.out.println("¿Confirmar cambios? Si = 1  No = 2");
+
+                                                if (opcionMenu == 1) {
+
+                                                    maxDiasAlquiler = maxDiasAlquilerCambio;
+                                                    System.out.println("Se cambio el valor correctamente");
+                                                    System.out.println(" ");
+                                                    operacion = 2;
+
+                                                }
+
+                                                else if (opcionMenu == 2) {
+
+                                                    System.out.println("Se cancelo la operación");
+                                                    System.out.println(" ");
+
+                                                }
+
+                                                else if (opcionMenu != 1 || opcionMenu != 2) {
+
+                                                    System.out.println("Ingresaste un valor no establecido");
+                                                    System.out.println(" ");
+
+                                                }
+
+                                                else {
+
+                                                    System.out.println("ERROR - CONTACTESE CON SOFTWARE J");
+                                                    System.out.println("");
+
+                                                }
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                    else if (opcionMenu == 3) {
+
+                                        System.out.println("////////////////////////////////////");
+                                        System.out.println("   Cambiar maximo descuentro extra ");
+                                        System.out.println("////////////////////////////////////");
+                                        System.out.println("");
+
+                                        System.out.println("El valor actual es de " + (maxDescuentoAlquilerDiasExtra*100) + "%");
+                                        System.out.println("");
+                                        
+                                        while (operacion == 1) {
+
+                                            System.out.println("Ingrese el nuevo valor: ");
+                                            maxDescuentoAlquilerDiasExtraCambio = leerT.nextFloat();
+                                            System.out.println(" ");
+
+                                            
+                                            if (maxDescuentoAlquilerDiasExtraCambio < 0.0f) {
+
+                                                System.out.println("No puede ingresar un valor menor 0");
+                                                System.out.println("");
+
+                                            }
+
+                                            else if (maxDescuentoAlquilerDiasExtraCambio == 0) {
+
+                                                System.out.println("El descuento pasa a ser 0% por lo cual ya no se realizara");
+                                                System.out.println(" ");
+
+                                            }
+
+                                            else if (maxDescuentoAlquilerDiasExtraCambio > 0 && maxDescuentoAlquilerDiasExtraCambio < 1) {
+
+                                                System.out.println("¿Confirmar cambios? Si = 1  No = 2");
+
+                                                if (opcionMenu == 1) {
+
+                                                    maxDescuentoAlquilerDiasExtra = (maxDescuentoAlquilerDiasExtraCambio / 100);
+                                                    System.out.println("Se cambio el valor correctamente");
+                                                    System.out.println(" ");
+                                                    operacion = 2;
+
+                                                }
+
+                                                else if (opcionMenu == 2) {
+
+                                                    System.out.println("Se cancelo la operación");
+                                                    System.out.println(" ");
+
+                                                }
+
+                                                else if (opcionMenu != 1 || opcionMenu != 2) {
+
+                                                    System.out.println("Ingresaste un valor no establecido");
+                                                    System.out.println(" ");
+
+                                                }
+
+                                                else {
+
+                                                    System.out.println("ERROR - CONTACTESE CON SOFTWARE J");
+                                                    System.out.println("");
+
+                                                }
+
+                                            }
+
+                                            else if (maxDescuentoAlquilerDiasExtraCambio >= 1) {
+
+                                                System.out.println("No puede ingresar un valor mayor o igual a 1");
+                                                System.out.println("");
+
+                                            }
+
+
+                                        }
+
+
+                                    }
+
+                                    else if (opcionMenu == 4) {
+
+                                        System.out.println("////////////////////////////////////");
+                                        System.out.println("        Operación cancelada     ");
+                                        System.out.println("////////////////////////////////////");
+                                        operacion = 2;
+
+                                    }
+
+                                    else if (opcionMenu != 1 || opcionMenu != 2 || opcionMenu != 3 || opcionMenu != 4) {
+
+                                        System.out.println("ERROR - Ingresaste un valor no establecido");
+
+                                    }
+
+                                    else {
+
+                                        System.out.println("ERROR -CONTACTESE CON SOFTWARE J");
+
+                                    }
 
                                 }
 
@@ -979,9 +1231,7 @@ public class facturacionAlquiler {
 
                                 }
 
-
                             }
-
 
                         }  
 
@@ -990,7 +1240,7 @@ public class facturacionAlquiler {
 
                             System.out.println(" ");
                             System.out.println("///////////////////////////////////////////////////////////////");
-                            System.out.println("                          Agregar usuario                      ");
+                            System.out.println("                        Agregar usuario                        ");
                             System.out.println("///////////////////////////////////////////////////////////////");
                             System.out.println(" ");
                             System.out.println("---------------------------------------------------------------");
@@ -1013,74 +1263,221 @@ public class facturacionAlquiler {
                                 System.out.println("//////////////////////////////");
                                 System.out.println(" ");
 
-                                while (operacion == 1) { 
-                                    
-                                    // INGRESA NUEVO USUARIO // 
-                                    System.out.print("Ingrese nuevo usuario: ");
-                                    user = leerT.next();
+                                // RECORRER EL ARRAY PARA SABER CUANTOS ESPACIOS LE QUEDAN 
+                                for (int i = 0; i < userEmpleadoArray.length; i++) {
 
-                                    // RECORRER EL ARRAY PARA SABER SI EL USUARIO YA EXISTE //
-                                    for (int i = 0; i < userEmpleadoArray.length; i++) {
+                                    // SI EL ELEMENTO NO ES NULL SUMARA A LA VARIABLE CONTADOR EL VALOR DE 1
+                                    // OBJETIVO -> SABER SI SE PUEDE AGREGAR OTRO ELEMENTOS AL ARRAY
+                                    if (userEmpleadoArray[i] != null) {
 
-                                        // SI EL USUARIO EXISTE ROMPERA EL CICLO Y SOLICITARA NUEVAMENTE EL USUARIO //
-                                        if (user.equals(userEmpleadoArray[i])) { 
+                                        contador++;
 
-                                            System.out.println("El usuario que ingreso ya existe");
-                                            break;
+                                    }
+
+                                }
+
+                                // SI EL ARRAY YA SE ENCUENTRA LLENO NO PODRA INGRESAR UN NUEVO USUARO
+                                if (contador < 10) {
+
+                                    while (operacion == 1) { 
+                                        
+                                        // INGRESA NUEVO USUARIO // 
+                                        System.out.print("Ingrese nuevo usuario: ");
+                                        user = leerT.next();
+
+                                        // RECORRER EL ARRAY PARA SABER SI EL USUARIO YA EXISTE //
+                                        for (int i = 0; i < userEmpleadoArray.length; i++) {
+
+                                            // SI EL USUARIO EXISTE ROMPERA EL CICLO Y SOLICITARA NUEVAMENTE EL USUARIO //
+                                            if (user.equals(userEmpleadoArray[i])) { 
+
+                                                System.out.println("El usuario que ingreso ya existe");
+                                                System.out.println(" ");
+                                                break;
+
+                                            }
+                                            
+                                            // SI EL USUARIO NO EXISTE Y LLEGUE i A SER IGUAL A LA LONGITUD DEL ARRAY, SE AGREGARA EL USUARIO //
+                                            else if ( i == (userEmpleadoArray.length - 1)) {
+
+                                                System.out.println("Se ingreso el usuario correctamente");
+                                                System.out.println(" ");
+                                                userEmpleadoArray[contador] = user;
+                                                operacion = 2; // CERRARA EL CICLO DE VALIDACIÓN PARA SABER SI EL USUARIO EXISTE O NO //
+
+                                            }
 
                                         }
                                         
-                                        // SI EL USUARIO NO EXISTE Y LLEGUE i A SER IGUAL A LA LONGITUD DEL ARRAY, SE AGREGARA EL USUARIO //
-                                        else if ( i == (userEmpleadoArray.length - 1)) {
+                                    }
+                                
 
-                                            System.out.println("Se ingreso el usuario correctamente");
-                                            userEmpleadoArray[userEmpleadoArray.length -  1] = user;
-                                            operacion = 2; // CERRARA EL CICLO DE VALIDACIÓN PARA SABER SI EL USUARIO EXISTE O NO //
+                                    while (operacion == 2) {
+
+                                        // INGRESE CONTRASEÑA PARA EL USUARIO //
+                                        System.out.println("");
+                                        System.out.println("Ingrese nueva contraseña para el usuario " + user);
+                                        System.out.print("Contraseña: ");
+                                        pass = leerT.next();
+                                        System.out.println(" ");
+
+                                        // RECORRER EL ARRAY PARA SABER SI LA CONTRASEÑA YA EXISTE //
+                                        for (int i = 0; i < passEmpleadoArray.length; i++) {
+
+                                            // SI CONTRASEÑA INGRESADA ES IGUAL AL ELEMENTO DEL ARRAY 1,2,3... (1) //
+                                            if (pass.equals(passEmpleadoArray[i])) {
+
+                                                // EN CUYO CASO LA CONTRASEÑA EXISTA ROMPERA EL CICLO Y VOLVERA A INICIAR //
+                                                System.out.println(" ");
+                                                System.out.println("La contraseña que ingreso ya existe");
+                                                System.out.println(" ");
+                                                break; // BREAK PARA ROMPER CICLO //
+
+                                            }
+
+                                            // SI i LLEGA A SER IGUAL A LA LONGITUD DEL ARRAY, SE AGREGARA LA CONTRASEÑA
+                                            // YA QUE ESTO SIGNIFICARA QUE SE RECORRIO EL ARRAY Y NO EXISTE LA CONTRASEÑA //
+                                            else if ( i == (passEmpleadoArray.length - 1)) {
+
+                                                // MENSAJE DE CONFIRMACIÓN INGRESO DE CONTRASEÑA // 
+                                                System.out.println(" ");
+                                                System.out.println("Se ingreso la contraseña correctamente");
+                                                System.out.println(" ");
+                                                
+                                                // SE AGREG LA CONTRASEÑA AL ARRAY AL ULTIMO ELEMENTO //
+                                                passEmpleadoArray[contador] = pass;
+                                                operacion = 1;
+
+                                            }
 
                                         }
 
                                     }
                                     
+                                    System.out.println("USUARIO CREADO EXITOSAMENTE");
+
+                                }
+                                
+                                // MENSAJE DE ERROR EN EL CUAL INFORMA QUE NO PUEDE INGRESAR MAS USUARIOS
+                                else if (userEmpleadoArray.length == 10) {
+
+                                    // MENSAJE DE ERROR
+                                    System.out.println(" ");
+                                    System.out.println(" NO SE PUEDEN AGREGAR MAS USUARIOS ");
+                                    System.out.println(" ");
+
                                 }
 
-                                while (operacion == 2) {
+                                // EN CASO DE QUE SUCEDA ALGUN BUG
+                                else {
 
-                                    // INGRESE CONTRASEÑA PARA EL USUARIO //
-                                    System.out.println("Ingrese nuevo contraseña para el usuario " + user);
-                                    System.out.print("Contraseña: ");
-                                    pass = leerT.next();
+                                    // MENSAJE DE ERROR BUG
+                                    System.out.println(" ");
+                                    System.out.println(" ERROR - BUG - CONTARSE CON SOFTRWARE-J - 321 335 1234 ");
+                                    System.out.println(" ");
 
-                                    // RECORRER EL ARRAY PARA SABER SI LA CONTRASEÑA YA EXISTE //
-                                    for (int i = 0; i < passEmpleadoArray.length; i++) {
 
-                                        if (pass.equals(passEmpleadoArray[i])) {
-
-                                            System.out.println("La contraseña que ingreso ya existe");
-                                            break;
-
-                                        }
-
-                                        else if ( i == (passEmpleadoArray.length - 1)) {
-
-                                            System.out.println("Se ingreso la contraseña correctamente");
-                                            passEmpleadoArray[passEmpleadoArray.length -  1] = pass;
-                                            operacion = 1;
-
-                                        }
-
-                                    }
-
-                                }  
+                                }
 
                             }
                             
-                            // CREACIÓN NUEVO USUARIO ADMINISTRADOR
+                            
+                            // CREACIÓN NUEVO USUARIO ADMINISTRADOR 
                             else if (opcionMenu == 2) {
 
                                 System.out.println("//////////////////////////////");
                                 System.out.println("  NUEVO USUARIO ADMINSTRADOR    ");
                                 System.out.println("//////////////////////////////");
-                                System.out.println(" ");                                
+                                System.out.println(" ");
+
+                                // RECORRER EL ARRAY PARA SABER CUANTOS ESPACIOS LE QUEDAN 
+                                for (int i = 0; i < userEmpleadoArray.length; i++) {
+
+                                    // SI EL ELEMENTO NO ES NULL SUMARA A LA VARIABLE CONTADOR EL VALOR DE 1
+                                    // OBJETIVO -> SABER SI SE PUEDE AGREGAR OTRO ELEMENTOS AL ARRAY
+                                    if (userEmpleadoArray[i] != null) {
+
+                                        contador++;
+
+                                    }
+
+                                }                                
+
+                                if (contador < 10) {
+
+                                    while (operacion == 1) { 
+                                        
+                                        // INGRESA NUEVO USUARIO // 
+                                        System.out.print("Ingrese el nuevo usuario: ");
+                                        user = leerT.next();
+
+                                        // RECORRER EL ARRAY PARA SABER SI EL USUARIO YA EXISTE //
+                                        for (int i = 0; i < userAdminstradorArray.length; i++) {
+
+                                            // SI EL USUARIO EXISTE ROMPERA EL CICLO Y SOLICITARA NUEVAMENTE EL USUARIO //
+                                            if (user.equals(userAdminstradorArray[i])) { 
+
+                                                System.out.println("El usuario que ingreso ya existe");
+                                                break;
+
+                                            }
+                                            
+                                            // SI EL USUARIO NO EXISTE Y LLEGUE i A SER IGUAL A LA LONGITUD DEL ARRAY, SE AGREGARA EL USUARIO //
+                                            else if ( i == (userAdminstradorArray.length - 1)) {
+
+                                                System.out.println("Se ingreso el usuario correctamente");
+                                                userAdminstradorArray[contador] = user; // SE AGREGA EL USUARIO AL ARRAY AL VALOR DE i//
+                                                operacion = 2; // CERRARA EL CICLO DE VALIDACIÓN PARA SABER SI EL USUARIO EXISTE O NO //
+
+                                            }
+
+                                        }
+                                        
+                                    }
+
+                                    // EL CICLO NO CERRARA HASTA QUE LA CONTRASEÑA A CREAR NO SE INGRESE CORRECTAMENTE //
+                                    while (operacion == 2) {
+
+                                        // INGRESE CONTRASEÑA PARA EL USUARIO //
+                                        System.out.println("Ingrese nueva contraseña para el usuario " + user);
+                                        System.out.print("Contraseña: ");
+                                        pass = leerT.next();
+
+                                        // RECORRER EL ARRAY PARA SABER SI LA CONTRASEÑA YA EXISTE //
+                                        for (int i = 0; i < passEmpleadoArray.length; i++) {
+
+                                            // SI EL VALOR DE PASS YA EXISTE EN ALGUN ELEMENTO DE 
+                                            if (pass.equals(passEmpleadoArray[i])) {
+
+                                                //  MENSAJE DE ERROR POR CONTRASEÑA YA EXISTENTE //
+                                                System.out.println("La contraseña que ingreso ya existe");
+                                                break;
+
+                                            }
+
+                                            // SI i ES IGUAL A LA LONGITUD DEL ARRAY, SE AGREGARA LA CONTRASEÑA, ESTO SIGNIFICARA QUE SE RECORRIO TODO EL ARRAY//
+                                            else if ( i == (passEmpleadoArray.length - 1)) {
+
+                                                System.out.println("Se ingreso la contraseña correctamente");
+                                                passEmpleadoArray[contador] = pass; // AGREGA CONSTRASEÑA AL ARRAY EN LA UNICACACION DE VALOR DE contador//
+                                                operacion = 1; // CERRARA EL CICLO DE VALIDACIÓN PARA SABER SI EL USUARIO EXISTE O NO //
+
+                                            }
+
+                                            // EN CASO DE QUE SUCEDA ALGUN BUG // 
+                                            else {
+
+                                                System.out.println(" ");
+                                                System.out.println("ERROR - CONTACTARSE CON SOFTWARE - J - 321 335 1234");
+                                                System.out.println(" ");
+
+                                            }
+
+                                        }
+
+                                    }  
+                                
+                                }
 
                             }
 
@@ -1100,14 +1497,113 @@ public class facturacionAlquiler {
 
                             else {
 
-                                System.out.println("error");
+                                System.out.println("ERROR - CONTACTARSE CON SOFTWARE - J - 321 335 1234");
 
                             }
                             
-                        }   
+                        }
+
+                        // LISTAR USUARIOS
+
+                        else if (opcionMenu == 3) {
+
+                            System.out.println("//////////////////////////////");
+                            System.out.println("        LISTAR USUARIOS       ");
+                            System.out.println("//////////////////////////////");
+                            System.out.println(" " );
+
+                            while (operacion == 1) {
+                                
+                                System.out.println(" ");
+                                System.out.println("¿Que usuarios desea listar?");
+                                System.out.println(" ");
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("|   Opcion   |                  Descripción                   |");
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println("|     1      |            listar usuarios empleados           |");
+                                System.out.println("|     2      |          listar usuarios administrador         |");
+                                System.out.println("|     3      |                     sallir                     |");
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.println(" ");
+                                System.out.print("Respuesta: ");
+                                opcionMenu = leerT.nextInt();
+                                System.out.println(" ");
+
+                                if (opcionMenu == 1) {
+
+                                    System.out.println(" ");
+                                    System.out.println("//////////////////////////////");
+                                    System.out.println("  LISTAR USUARIOS EMPLEADOS    ");
+                                    System.out.println("//////////////////////////////");
+                                    System.out.println(" ");
+
+                                    for (int i = 0; i < userEmpleadoArray.length; i++) {
+
+                                        if (userEmpleadoArray[i] != null) {
+
+                                            System.out.println("Usuario " + (i+1) + "°");
+                                            System.out.println("Usuario: " + userEmpleadoArray[i] + "\n" + "Contraseña: " + passEmpleadoArray[i]);
+                                            System.out.println(" ");
+
+                                        }
+
+                                    }
+
+                                    operacion = 2;
+
+                                }
+
+                                else if (opcionMenu == 2) {
+
+                                    System.out.println(" ");
+                                    System.out.println("///////////////////////////////");
+                                    System.out.println(" LISTAR USUARIOS ADMINISTRADOR ");
+                                    System.out.println("///////////////////////////////");
+                                    System.out.println(" ");
+
+                                    for (int i = 0; i < userAdminstradorArray.length; i++) {
+
+                                        if (userAdminstradorArray[i] != null) {
+
+                                            System.out.println("Usuario " + (i+1) + "°");
+                                            System.out.println("Usuario: " + userAdminstradorArray[i] + "\n" + "Contraseña: " + passAdministradorArray[i]);
+                                            System.out.println(" ");
+
+                                        }
+
+                                    }
+
+                                    operacion = 2;
+
+                                }
+
+                                else if (opcionMenu == 3) {
+
+                                    System.out.println(" ");
+                                    System.out.println("Operación de listar usuarios cancelada");
+                                    System.out.println(" ");
+                                    operacion = 2;
+
+                                }
+
+                                else if (opcionMenu != 1 || opcionMenu != 2 || opcionMenu != 3) {
+
+                                    System.out.println("Ingresaste un valor no establecido");
+
+                                }
+
+                                else {
+
+                                    System.out.println("ERROR - CONTACTARSE CON SOFTWARE - J - 321 335 1234");
+
+                                }
+
+                            }
+
+                        }
 
                         // CERRAR SESION
-                        else if (opcionMenu == 3) {
+                        else if (opcionMenu == 4) {
 
                             System.out.println(" ");   
                             System.out.println("Sesion cerrada");
@@ -1120,7 +1616,7 @@ public class facturacionAlquiler {
                         else {
 
                             System.out.println(" ");
-                            System.out.println("Error");
+                            System.out.println("ERROR - CONTACTARSE CON SOFTWARE - J - 321 335 1234");
                             System.out.println(" ");
 
                         }
@@ -1142,7 +1638,7 @@ public class facturacionAlquiler {
                 else {
 
                     System.out.println(" ");
-                    System.out.println("Error");
+                    System.out.println("ERROR - CONTACTARSE CON SOFTWARE - J - 321 335 1234");
                     System.out.println(" ");
 
                 }   
