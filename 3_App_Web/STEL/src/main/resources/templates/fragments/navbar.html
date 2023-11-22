@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+    <header th:fragment="navbar">
+        <a href="/" class="logo" style="text-decoration: none;"><i><img src="/Images/0. Logos/1. logo sin titulo.png" id="LogoSTEL"></i><span>STEL</span></a>
+        <ul class="navbar">
+            <li><a href="/" class="active" style="text-decoration: none;">Inicio</a></li>
+            <li><a href="/sobrenosotros" class="active" style="text-decoration: none;">Sobre nosotros</a></li>
+            <li><a href="/servicios" class="active" style="text-decoration: none;">Servicios</a></li>
+            <li><a href="/contactenos" class="active" style="text-decoration: none;">Contactenos</a></li>
+        </ul>
+        <div class="main">
+            <a href="/ingresar" class="user" style="text-decoration: none;"><i class="ri-user-6-line"></i>Ingresar</a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/header :: header}"></head>
+
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<section>
+
+    <div class="mapa_Sitio_main" style="margin-top: 180px">
+
+        <div class="mapa_Sitio_Cuerpo">
+
+            <div class="titulo_Mapa_Sitio">
+
+                <h1>Mapa del Sitio <i class="fa-solid fa-map"></i></h1>
+                <p>En la siguiente pagina encontrara los vinculos directos a las secciones de nuestra pagina</p>
+
+            </div>
+
+            <div class="contenido_Mapa_Sitio">
+
+                <a href="/">- Inicio</a>
+                <a href="sobreNosotros.html">- Sobre nosotros </i></a>
+                <a href="servicios.html">- Servicios</a>
+                <a href="contactenos.html">- Contactenos</a>
+                <a href="/ingresar">- Ingresar</a>
+                <a href="politicaPrivacidad.html"> - Politica de Privacidad</a>
+                <a href="paginasComplementarias.html"> - Paginas Complementarias</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+
+</html>

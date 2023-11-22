@@ -1,0 +1,78 @@
+<!-- src/main/resources/templates/index.html -->
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/header :: header}"></head>
+
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<section>
+
+    <form action="" class="formulario" id="formulario" method="post" style="margin-top: 200px; margin-bottom: 150px">
+
+        <h1>Inicio de Sesión</h1>
+
+        <!-- Grupo Usuario -->
+
+        <div class="formulario__grupo" id="grupo__usuario">
+
+
+            <label for="usuario" class="formulario__label">Usuario</label>
+
+            <div class="formulario__grupo-input">
+
+                <input type="text" class="formulario__input" name="usuario" id="usuario" placeholder="correo electronico...">
+                <i class="formulario__validacion-estado fa-solid fa-circle-xmark"></i>
+                <p class="formulario__input-error">El correo electronico es incorrecto</p>
+
+            </div>
+
+        </div>
+
+        <!-- Grupo Contraseña -->
+
+        <div class="formulario__grupo" id="grupo__password">
+
+            <label for="password" class="formulario__label">Contraseña</label>
+
+            <div class="formulario__grupo-input">
+
+                <input type="password" class="formulario__input" name="password" id="password" placeholder="contraseña...">
+                <i class="formulario__validacion-estado fa-solid fa-circle-xmark"></i>
+                <p class="formulario__input-error">La contraseña no es correcta</p>
+
+            </div>
+
+        </div>
+
+        <div class="formulario__mensaje" id="formulario__mensaje">
+
+            <p><i class="fa-solid fa-triangle-exclamation" style="color: #a11129;"></i> <b>Error: </b> Los datos ingresado son incorrectos </p>
+
+        </div>
+
+        <div class="formulario__grupo formulario__grupo-btn-enviar" style="margin-bottom: 30px">
+
+            <button type="submit" class="formulario__btn">Enviar</button>
+
+        </div>
+
+        <a href="/recoverPassword" style="color: #23518C">Recuperar Contraseña</a>
+
+    </form>
+
+
+
+    <script src="/JavaScript/0-validacionFormularios/0-formularioLogin.js"></script>
+    <!-- JavaScript de validación para el formulario loging -->
+
+</section>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+
+</html>

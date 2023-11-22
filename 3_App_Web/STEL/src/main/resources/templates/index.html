@@ -1,0 +1,116 @@
+<!-- src/main/resources/templates/index.html -->
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/header :: header}"></head>
+
+    <body>
+
+        <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+        <section>
+
+            <!-- Primera parte - Carrusel de imagenes -->
+
+
+
+            <!-- Segunda parte - Llamado a la acción -->
+
+            <div class="llamadoAcccion" style="margin-top: 180px">
+
+                <div class="contenedorLlamadoAccion">
+
+                    <div class="box">
+
+                        <div class="textoLlamadoAccion">
+
+                            <h1>Digitalizando la Administración</h1>
+                            <p>Te presentamos STEL, el sistema de información que te conecta con tu administración y tu comunidad. Con STEL, puedes realizar solicitud de alquiler, consultar la documentación del conjunto y estar al día con todo lo que pasa en tu conjunto.</p>
+                            <a href="/servicios">Conoce mas</a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="box">
+
+                        <figure>
+
+                            <img src="/Images/1. index/1. llamadoAccion/imagenPixelArtLLamadoAccion.webp" alt="Personas en un parque con perros">
+
+                        </figure>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Tercera Parte - Tecnologias -->
+
+            <center>
+
+                <div class="segundaParte">
+
+                    <div class="box" id = "tituloTecnologias" >
+
+                        <h1>Tecnologias <i class="fa-solid fa-microchip"></i></h1>
+
+                    </div>
+
+                    <div class="grupoTecnologias">
+
+                        <div class="box">
+
+                            <figure>
+
+                                <img src="/Images/1. index/2. tecnologias/0. py.png" alt="python">
+
+                            </figure>
+
+                        </div>
+
+                        <div class="box">
+
+                            <figure>
+
+                                <img src="/Images/1. index/2. tecnologias/1. css.png" alt="python">
+
+                            </figure>
+
+                        </div>
+
+                        <div class="box">
+
+                            <figure>
+
+                                <img src="/Images/1. index/2. tecnologias/2. html.png" alt="html">
+
+                            </figure>
+
+                        </div>
+
+                        <div class="box">
+
+                            <figure>
+
+                                <img src="/Images/1. index/2. tecnologias/3. js.png" alt="css">
+
+                            </figure>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </center>
+
+        </section>
+
+        <div th:replace="~{fragments/footer :: footer}"></div>
+
+    </body>
+
+</html>
