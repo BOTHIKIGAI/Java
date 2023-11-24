@@ -8,53 +8,53 @@ public class SitePageController {
 
     @GetMapping("/")
     public String landinPage() {
-        return "index";
+        return "/public/index";
     }
 
     @GetMapping("/ingresar")
     public String ingresarPage() {
-        return "ingresar";
+        return "/public/ingresar";
     }
 
     @GetMapping("/mapa")
     public String mapaPage() {
-        return "mapa";
+        return "/public/mapa";
     }
 
     @GetMapping("/recoverPassword")
     public String recoverPasswordPage(){
-        return "recoverPassword";
+        return "/public/recoverPassword";
     }
 
     @GetMapping("/paginascomplementarias")
     public String paginaComplementariaPage(){
-        return  "paginascomplementarias";
+        return  "/public/paginascomplementarias";
     }
 
     @GetMapping("/politicaprivacidad")
     public String politicaPrivacidadPage() {
-        return "politicaprivacidad";
+        return "/public/politicaprivacidad";
     }
 
     @GetMapping("/servicios")
     public String serviciosPage() {
-        return "servicios";
+        return "/public/servicios";
     }
 
     @GetMapping("/sobrenosotros")
     public String sobreNosotrosPage() {
-        return "sobrenosotros";
+        return "/public/sobrenosotros";
     }
 
     @GetMapping("contactenos")
     public String contactenosPage() {
-        return "contactenos";
+        return "/public/contactenos";
     }
 
     // ERRO PAGE //
 
     @GetMapping("/error404")
-    public String error404Page() { return "error404"; }
+    public String error404Page() { return "/public/error404"; }
 
 
 }
